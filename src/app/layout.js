@@ -42,6 +42,10 @@ export const metadata = {
       'A cleaner web, on by default. Purus blocks virtually every explicit domain, ad, and unsafe search before it loads.',
     images: ['/og-image.png'],
   },
+  icons: {
+    icon: '/favicon.png',
+    apple: '/favicon.png',
+  },
 }
 
 export default function RootLayout({ children }) {

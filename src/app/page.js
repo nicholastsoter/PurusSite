@@ -2,7 +2,42 @@
 import Nav from '@/components/Nav'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import AppCarousel from '@/components/AppCarousel'
+
+/* ─── FAQ accordion item ─── */
+function FAQItem({ question, answer }) {
+  const [open, setOpen] = useState(false)
+  return (
+    <div
+      className="border-b border-gray-100 cursor-pointer"
+      onClick={() => setOpen(!open)}
+    >
+      <div className="flex items-center justify-between py-6 gap-4">
+        <h4 className="font-semibold text-[var(--dark)] text-base">{question}</h4>
+        <div
+          className="flex-shrink-0 w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center transition-all duration-300"
+          style={{
+            background: open ? 'var(--blue)' : 'white',
+            borderColor: open ? 'var(--blue)' : '',
+            transform: open ? 'rotate(45deg)' : 'rotate(0deg)',
+          }}
+        >
+          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 14 14"
+            style={{ color: open ? 'white' : 'var(--gray)' }}>
+            <path d="M7 2v10M2 7h10" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round"/>
+          </svg>
+        </div>
+      </div>
+      <div
+        className="overflow-hidden transition-all duration-500 ease-in-out"
+        style={{ maxHeight: open ? '300px' : '0px', opacity: open ? 1 : 0 }}
+      >
+        <p className="text-sm text-[var(--gray)] leading-7 pb-6 pr-12">{answer}</p>
+      </div>
+    </div>
+  )
+}
 
 /* ─── Reusable section wrapper ─── */
 function Section({ id, className = '', children, style }) {
@@ -173,12 +208,13 @@ export default function Home() {
           <div id="download" className="hero-reveal flex flex-col sm:flex-row gap-3 justify-center items-center">
             <a
               href="#"
-              className="btn-spring inline-flex items-center gap-2.5 bg-[var(--dark)] text-white px-6 py-3.5 rounded-full font-medium text-sm hover:bg-gray-800"
+              className="inline-block hover:opacity-80 transition-opacity"
             >
-              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
-              </svg>
-              Download on the App Store
+              <img
+                src="/app-store-badge.svg"
+                alt="Download on the App Store"
+                style={{ height: '44px', width: 'auto' }}
+              />
             </a>
             <a href="#how-it-works" className="text-sm text-[var(--gray)] hover:text-[var(--dark)] underline underline-offset-4">
               See how it works
@@ -188,6 +224,30 @@ export default function Home() {
           <p className="hero-reveal mt-8 text-xs text-[var(--gray)] tracking-wide">
             Free · iOS 16+ · No account required · On-device filtering
           </p>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════
+          STATS
+      ══════════════════════════════════════ */}
+      <section className="py-16 px-6 border-y border-gray-100">
+        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div>
+            <p className="font-display text-5xl md:text-6xl text-[var(--blue)] leading-none mb-2">99%+</p>
+            <p className="text-sm text-[var(--gray)]">Of explicit requests blocked</p>
+          </div>
+          <div>
+            <p className="font-display text-5xl md:text-6xl text-[var(--blue)] leading-none mb-2">4</p>
+            <p className="text-sm text-[var(--gray)]">Filtering layers</p>
+          </div>
+          <div>
+            <p className="font-display text-5xl md:text-6xl text-[var(--blue)] leading-none mb-2">10,000+</p>
+            <p className="text-sm text-[var(--gray)]">Known domains blocked</p>
+          </div>
+          <div>
+            <p className="font-display text-5xl md:text-6xl text-[var(--blue)] leading-none mb-2">100%</p>
+            <p className="text-sm text-[var(--gray)]">Filtered on your device</p>
+          </div>
         </div>
       </section>
 
@@ -210,6 +270,22 @@ export default function Home() {
           <AudienceCard emoji="🕊️" title="Faith communities" description="A browser aligned with values you already hold, without any extra configuration." />
           <AudienceCard emoji="🧘" title="Anyone" description="Sometimes you just want a browser that doesn't make the web feel dangerous." />
         </div>
+      </Section>
+
+      {/* ── divider ── */}
+      <div className="max-w-5xl mx-auto px-6"><hr className="border-[var(--gray-mid)]" /></div>
+
+      {/* ══════════════════════════════════════
+          APP CAROUSEL
+      ══════════════════════════════════════ */}
+      <Section className="py-24">
+        <div className="text-center mb-14 reveal">
+          <p className="text-xs font-semibold text-[var(--blue)] uppercase tracking-widest mb-3">See it in action</p>
+          <h2 className="font-display text-4xl md:text-5xl text-[var(--dark)] leading-tight">
+            Simple by design.
+          </h2>
+        </div>
+        <AppCarousel />
       </Section>
 
       {/* ── divider ── */}
@@ -374,6 +450,41 @@ export default function Home() {
       <div className="max-w-5xl mx-auto px-6"><hr className="border-[var(--gray-mid)]" /></div>
 
       {/* ══════════════════════════════════════
+          FAQ
+      ══════════════════════════════════════ */}
+      <Section className="py-24">
+        <div className="max-w-2xl mx-auto">
+          <div className="text-center mb-14">
+            <p className="text-xs font-semibold text-[var(--blue)] uppercase tracking-widest mb-3">FAQ</p>
+            <h2 className="font-display text-4xl md:text-5xl text-[var(--dark)] leading-tight">
+              Questions.
+            </h2>
+          </div>
+          <div>
+            <FAQItem
+              question="Will Purus slow down my browsing?"
+              answer="No. All filtering happens on-device before requests are made, so there's no round-trip to an external server to check content. In most cases Purus is actually faster than a standard browser because ads and trackers are blocked before they load."
+            />
+            <FAQItem
+              question="What if a legitimate site gets blocked?"
+              answer="It happens occasionally. Tap 'Report it' on the blocked page and we review it within 24 hours. False positive reports go directly to our block list team and the site is usually cleared in the next filter update."
+            />
+            <FAQItem
+              question="Can my child turn off the filtering?"
+              answer="No. The filtering layers are built into the browser at a level that cannot be toggled off by the user. Safe search, DNS filtering, and the keyword scanner are always on. The only way to disable filtering is to delete the app."
+            />
+            <FAQItem
+              question="Is Purus free?"
+              answer="The core browser is free to download with no account required — four filtering layers, safe search locked, and ad blocking all included at no cost. We're building a parent dashboard with additional controls and reporting for families who want more visibility. That will be a paid tier when it launches. For now, everything you need to browse clean is free."
+            />
+          </div>
+        </div>
+      </Section>
+
+      {/* ── divider ── */}
+      <div className="max-w-5xl mx-auto px-6"><hr className="border-[var(--gray-mid)]" /></div>
+
+      {/* ══════════════════════════════════════
           FINAL CTA
       ══════════════════════════════════════ */}
       <Section className="py-24 text-center">
@@ -386,12 +497,13 @@ export default function Home() {
           </p>
           <a
             href="#"
-            className="btn-spring inline-flex items-center gap-2.5 bg-[var(--blue)] text-white px-7 py-4 rounded-full font-medium text-sm hover:bg-[var(--blue-dark)]"
+            className="inline-block hover:opacity-80 transition-opacity"
           >
-            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
-            </svg>
-            Download on the App Store
+            <img
+              src="/app-store-badge.svg"
+              alt="Download on the App Store"
+              style={{ height: '44px', width: 'auto' }}
+            />
           </a>
           <p className="mt-4 text-xs text-[var(--gray)]">Requires iOS 16 or later · iPhone</p>
         </div>

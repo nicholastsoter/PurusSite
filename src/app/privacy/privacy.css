@@ -1,0 +1,10 @@
+/* Privacy policy prose list styles */
+.prose-custom ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+  space-y: 0.5rem;
+}
+
+.prose-custom ul li {
+  margin-top: 0.35rem;
+}

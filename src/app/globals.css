@@ -1,0 +1,171 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --blue: #1B6CF2;
+  --blue-light: #EBF2FF;
+  --blue-dark: #0F4BC4;
+  --dark: #111827;
+  --gray: #6B7280;
+  --gray-light: #F9FAFB;
+  --gray-mid: #E5E7EB;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  color: var(--dark);
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Global smooth color/bg transitions ── */
+*,
+*::before,
+*::after {
+  transition: color 200ms ease, background-color 200ms ease;
+}
+
+/* Don't let the global transition fight animation transitions */
+.reveal,
+.hero-word,
+.hero-reveal,
+.audience-reveal,
+.card-reveal {
+  transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.65s cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+.font-display {
+  font-family: var(--font-display), Georgia, serif;
+}
+
+/* ─────────────────────────────────────────
+   HERO SECTION BACKGROUND
+───────────────────────────────────────── */
+.hero-bg {
+  background: #ffffff;
+}
+
+/* ─────────────────────────────────────────
+   HERO NOISE / GRAIN OVERLAY
+   CSS-only fractal noise via SVG data-URI
+───────────────────────────────────────── */
+.hero-noise {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+
+/* ─────────────────────────────────────────
+   SHIELD FLOATING ANIMATION
+───────────────────────────────────────── */
+@keyframes float-shield {
+  0%,  100% { transform: translateY(0px);   }
+  50%        { transform: translateY(-3px);  }
+}
+
+.shield-float {
+  animation: float-shield 3s ease-in-out infinite;
+  display: inline-block;
+}
+
+/* ─────────────────────────────────────────
+   HERO WORD-BY-WORD ANIMATION
+───────────────────────────────────────── */
+.hero-word {
+  opacity: 0;
+  transform: translateY(20px);
+  display: inline-block;
+}
+
+.hero-word.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─────────────────────────────────────────
+   HERO SUB / CTA / TRUST REVEAL
+───────────────────────────────────────── */
+.hero-reveal {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.hero-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─────────────────────────────────────────
+   SCROLL-TRIGGERED REVEALS
+───────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Audience cards: scale + fade pop-in */
+.audience-reveal {
+  opacity: 0;
+  transform: scale(0.91) translateY(14px);
+}
+
+.audience-reveal.visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* Feature cards: slide up */
+.card-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+}
+
+.card-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─────────────────────────────────────────
+   BUTTON SPRING / BOUNCE HOVER
+───────────────────────────────────────── */
+.btn-spring {
+  transition: transform 200ms cubic-bezier(0.34, 1.56, 0.64, 1),
+              background-color 200ms ease,
+              color 200ms ease !important;
+}
+
+.btn-spring:hover {
+  transform: scale(1.04);
+}
+
+/* ─────────────────────────────────────────
+   NAV BLUR — SMOOTHER TRANSITION (400ms)
+───────────────────────────────────────── */
+nav.purus-nav {
+  transition: background-color 400ms ease,
+              box-shadow 400ms ease,
+              border-color 400ms ease !important;
+}

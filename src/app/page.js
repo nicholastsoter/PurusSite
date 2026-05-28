@@ -246,7 +246,7 @@ export default function Home() {
           </div>
           <div>
             <p className="font-display text-5xl md:text-6xl text-[var(--blue)] leading-none mb-2">100%</p>
-            <p className="text-sm text-[var(--gray)]">Filtered on your device</p>
+            <p className="text-sm text-[var(--gray)]">No data leaves your phone</p>
           </div>
         </div>
       </section>

@@ -26,18 +26,13 @@ const slides = [
 
 export default function AppCarousel() {
   const [current, setCurrent] = useState(0)
-  const [animating, setAnimating] = useState(false)
 
   const goTo = useCallback(
     (index) => {
-      if (animating || index === current) return
-      setAnimating(true)
-      setTimeout(() => {
-        setCurrent(index)
-        setAnimating(false)
-      }, 250)
+      if (index === current) return
+      setCurrent(index)
     },
-    [animating, current]
+    [current]
   )
 
   const prev = () => goTo((current - 1 + slides.length) % slides.length)
@@ -77,21 +72,26 @@ export default function AppCarousel() {
             {/* Notch */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-5 bg-gray-900 rounded-b-2xl z-10" />
 
-            {/* Screenshot */}
-            <div
-              className="w-full h-full transition-opacity duration-250"
-              style={{ opacity: animating ? 0 : 1 }}
-            >
-              <img
-                src={slides[current].src}
-                alt={slides[current].caption}
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  objectPosition: 'top',
-                }}
-              />
+            {/* Screenshots — crossfade */}
+            <div className="relative w-full h-full">
+              {slides.map((slide, i) => (
+                <img
+                  key={slide.src}
+                  src={slide.src}
+                  alt={slide.caption}
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    objectPosition: 'top',
+                    opacity: i === current ? 1 : 0,
+                    transition: 'opacity 0.4s ease',
+                  }}
+                />
+              ))}
             </div>
           </div>
 
@@ -114,10 +114,7 @@ export default function AppCarousel() {
       </div>
 
       {/* Caption */}
-      <p
-        className="mt-6 text-sm font-medium text-[var(--blue)] tracking-wide transition-opacity duration-250"
-        style={{ opacity: animating ? 0 : 1 }}
-      >
+      <p className="mt-6 text-sm font-medium text-[var(--blue)] tracking-wide">
         {slides[current].caption}
       </p>
 

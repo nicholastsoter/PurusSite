@@ -1,6 +1,5 @@
 'use client'
 import { useState, useEffect, useCallback } from 'react'
-import Image from 'next/image'
 
 const slides = [
   {
@@ -83,13 +82,15 @@ export default function AppCarousel() {
               className="w-full h-full transition-opacity duration-250"
               style={{ opacity: animating ? 0 : 1 }}
             >
-              <Image
+              <img
                 src={slides[current].src}
                 alt={slides[current].caption}
-                fill
-                className="object-cover object-top"
-                sizes="220px"
-                priority={current === 0}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  objectPosition: 'top',
+                }}
               />
             </div>
           </div>

@@ -2,7 +2,7 @@
 import Nav from '@/components/Nav'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import AppCarousel from '@/components/AppCarousel'
 
 /* ─── FAQ accordion item ─── */
@@ -116,8 +116,6 @@ const CHECK_ITEMS = [
 ]
 
 export default function Home() {
-  const heroContentRef = useRef(null)
-
   /* ── Hero: render instantly on mobile, animate on desktop ── */
   useEffect(() => {
     const isMobile = window.innerWidth < 768
@@ -135,18 +133,7 @@ export default function Home() {
     }
   }, [])
 
-  /* ── Parallax on hero content ── */
-  useEffect(() => {
-    const heroEl = heroContentRef.current
-    if (!heroEl) return
-    const onScroll = () => {
-      heroEl.style.transform = `translateY(${window.scrollY * 0.22}px)`
-    }
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
-  /* ── IntersectionObserver for scroll reveals ── */
+/* ── IntersectionObserver for scroll reveals ── */
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -181,7 +168,7 @@ export default function Home() {
       ══════════════════════════════════════ */}
       <section className="hero-bg relative px-6 pt-40 pb-28 text-center overflow-hidden">
         <div className="hero-noise" aria-hidden="true" />
-        <div className="max-w-5xl mx-auto relative z-10" ref={heroContentRef}>
+        <div className="max-w-5xl mx-auto relative z-10">
 
           <div className="flex justify-center mb-8">
             <Image

@@ -172,6 +172,16 @@ body {
 }
 
 /* ─────────────────────────────────────────
+   HERO SECTION — PREVENT MOBILE REPAINT
+───────────────────────────────────────── */
+section:first-of-type {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* ─────────────────────────────────────────
    NAV BLUR — SMOOTHER TRANSITION (400ms)
 ───────────────────────────────────────── */
 nav.purus-nav {

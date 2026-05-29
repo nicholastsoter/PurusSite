@@ -507,10 +507,8 @@ export default function Home() {
           FOOTER  (#0F1F3D)
       ══════════════════════════════════════ */}
       <footer style={{ background: '#0F1F3D' }} className="px-6 py-10">
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center">
-            <span className="font-bold text-white text-lg tracking-tight">Purus</span>
-          </div>
+        <div className="max-w-5xl mx-auto flex flex-col items-center gap-4 text-center">
+          <span className="font-bold text-white text-lg tracking-tight">Purus</span>
           <div className="flex items-center gap-6 text-sm" style={{ color: 'rgba(255,255,255,0.6)' }}>
             <Link href="/privacy" className="hover:text-white">Privacy Policy</Link>
             <a href="mailto:nicholas.purus@gmail.com" className="hover:text-white">Contact</a>

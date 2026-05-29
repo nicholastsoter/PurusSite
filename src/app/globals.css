@@ -189,3 +189,20 @@ nav.purus-nav {
               box-shadow 400ms ease,
               border-color 400ms ease !important;
 }
+
+/* ─────────────────────────────────────────
+   PLATFORM CAROUSEL
+───────────────────────────────────────── */
+@keyframes carousel-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.carousel-track {
+  display: flex;
+  gap: 48px;
+  padding: 4px 0;
+  width: max-content;
+  animation: carousel-scroll 45s linear infinite;
+  will-change: transform;
+}

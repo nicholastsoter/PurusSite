@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import AppCarousel from '@/components/AppCarousel'
+import FactSheet from '@/components/FactSheet'
 
 /* ─── FAQ accordion item ─── */
 function FAQItem({ question, answer }) {
@@ -105,6 +106,13 @@ function AudienceCard({ emoji, title, description }) {
     </div>
   )
 }
+
+const STATS = [
+  { value: '7',     label: 'Simultaneous filtering layers',      sub: 'No competitor runs more than 2–3' },
+  { value: '99%+',  label: 'Of explicit requests blocked',          sub: 'Across all seven filtering layers combined' },
+  { value: '400+',  label: 'Keyword terms blocked',              sub: 'Across every major search engine' },
+  { value: '60s',   label: 'From download to browsing clean',    sub: 'Onboard in seconds. No account needed.' },
+]
 
 const CHECK_ITEMS = [
   'Safe Search locked on Google — cannot be disabled',
@@ -221,29 +229,45 @@ export default function Home() {
         </div>
       </section>
 
+
       {/* ══════════════════════════════════════
-          STATS
+          STAT CARDS  (below hero)
       ══════════════════════════════════════ */}
-      <section className="py-16 px-6 border-y border-gray-100">
-        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          <div>
-            <p className="font-display text-5xl md:text-6xl text-[var(--blue)] leading-none mb-2">99%+</p>
-            <p className="text-sm text-[var(--gray)]">Of explicit requests blocked</p>
+      <section className="px-6 py-16">
+        <div className="max-w-5xl mx-auto flex flex-col gap-10">
+          <div className="text-center flex flex-col items-center gap-3 reveal">
+            <p className="text-xs font-semibold text-[var(--blue)] uppercase tracking-widest">Built Different</p>
+            <h2 className="font-display text-4xl md:text-5xl text-[var(--dark)] leading-tight max-w-2xl">
+              The Most Comprehensive Free Content Filter Available
+            </h2>
+            <p className="text-[var(--gray)] max-w-lg leading-relaxed">
+              Purus stacks seven independent layers of protection — from DNS to keyword to
+              cookie enforcement — so nothing slips through.
+            </p>
           </div>
-          <div>
-            <p className="font-display text-5xl md:text-6xl text-[var(--blue)] leading-none mb-2">4</p>
-            <p className="text-sm text-[var(--gray)]">Filtering layers</p>
-          </div>
-          <div>
-            <p className="font-display text-5xl md:text-6xl text-[var(--blue)] leading-none mb-2">10,000+</p>
-            <p className="text-sm text-[var(--gray)]">Known domains blocked</p>
-          </div>
-          <div>
-            <p className="font-display text-5xl md:text-6xl text-[var(--blue)] leading-none mb-2">60s</p>
-            <p className="text-sm text-[var(--gray)]">From download to browsing clean</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5" data-cascade-parent data-cascade-delay="100">
+            {STATS.map((s) => (
+              <div
+                key={s.value}
+                data-cascade
+                className="card-reveal bg-white border border-[var(--gray-mid)] rounded-2xl p-8 flex flex-col gap-2 hover:shadow-md"
+                style={{ transition: 'box-shadow 200ms ease, opacity 0.55s cubic-bezier(0.22,1,0.36,1), transform 0.55s cubic-bezier(0.22,1,0.36,1)' }}
+              >
+                <p className="font-display leading-none" style={{ fontSize: 'clamp(40px, 6vw, 56px)', color: 'var(--blue)' }}>
+                  {s.value}
+                </p>
+                <p className="font-semibold text-[var(--dark)] text-base leading-snug">{s.label}</p>
+                <p className="text-sm text-[var(--gray)] leading-relaxed">{s.sub}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
+
+      {/* ══════════════════════════════════════
+          FACT SHEET
+      ══════════════════════════════════════ */}
+      <FactSheet />
 
       {/* ── divider ── */}
       <div className="max-w-5xl mx-auto px-6"><hr className="border-[var(--gray-mid)]" /></div>

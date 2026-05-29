@@ -89,6 +89,7 @@ export default function AppCarousel() {
                     objectPosition: 'top',
                     opacity: i === current ? 1 : 0,
                     transition: 'opacity 0.4s ease',
+                    willChange: 'opacity',
                   }}
                 />
               ))}

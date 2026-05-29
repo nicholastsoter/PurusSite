@@ -118,14 +118,21 @@ const CHECK_ITEMS = [
 export default function Home() {
   const heroContentRef = useRef(null)
 
-  /* ── Hero word-by-word stagger ── */
+  /* ── Hero: render instantly on mobile, animate on desktop ── */
   useEffect(() => {
-    document.querySelectorAll('.hero-word').forEach((word, i) => {
-      setTimeout(() => word.classList.add('visible'), 100 + i * 80)
-    })
-    document.querySelectorAll('.hero-reveal').forEach((el, i) => {
-      setTimeout(() => el.classList.add('visible'), 680 + i * 110)
-    })
+    const isMobile = window.innerWidth < 768
+    if (isMobile) {
+      document.querySelectorAll('.hero-word, .hero-reveal').forEach((el) => {
+        el.classList.add('visible')
+      })
+    } else {
+      document.querySelectorAll('.hero-word').forEach((word, i) => {
+        setTimeout(() => word.classList.add('visible'), 100 + i * 80)
+      })
+      document.querySelectorAll('.hero-reveal').forEach((el, i) => {
+        setTimeout(() => el.classList.add('visible'), 680 + i * 110)
+      })
+    }
   }, [])
 
   /* ── Parallax on hero content ── */
@@ -156,7 +163,7 @@ export default function Home() {
           observer.unobserve(el)
         })
       },
-      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
     )
     document.querySelectorAll('.reveal, [data-cascade-parent]').forEach((el) => observer.observe(el))
     return () => observer.disconnect()

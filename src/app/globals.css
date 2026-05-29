@@ -16,6 +16,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -webkit-overflow-scrolling: touch;
 }
 
 html {
@@ -91,13 +92,14 @@ body {
 ───────────────────────────────────────── */
 .hero-word {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translate3d(0, 20px, 0);
   display: inline-block;
+  will-change: transform, opacity;
 }
 
 .hero-word.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
 }
 
 /* ─────────────────────────────────────────
@@ -105,12 +107,13 @@ body {
 ───────────────────────────────────────── */
 .hero-reveal {
   opacity: 0;
-  transform: translateY(16px);
+  transform: translate3d(0, 16px, 0);
+  will-change: transform, opacity;
 }
 
 .hero-reveal.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
 }
 
 /* ─────────────────────────────────────────
@@ -118,34 +121,41 @@ body {
 ───────────────────────────────────────── */
 .reveal {
   opacity: 0;
-  transform: translateY(26px);
+  transform: translate3d(0, 26px, 0);
+  will-change: transform, opacity;
 }
 
 .reveal.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
 }
 
 /* Audience cards: scale + fade pop-in */
 .audience-reveal {
   opacity: 0;
-  transform: scale(0.91) translateY(14px);
+  transform: scale(0.91) translate3d(0, 14px, 0);
+  will-change: transform, opacity;
 }
 
 .audience-reveal.visible {
   opacity: 1;
-  transform: scale(1) translateY(0);
+  transform: scale(1) translate3d(0, 0, 0);
 }
 
 /* Feature cards: slide up */
 .card-reveal {
   opacity: 0;
-  transform: translateY(22px);
+  transform: translate3d(0, 22px, 0);
+  will-change: transform, opacity;
 }
 
 .card-reveal.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
+}
+
+.animate-fade-up {
+  will-change: transform, opacity;
 }
 
 /* ─────────────────────────────────────────

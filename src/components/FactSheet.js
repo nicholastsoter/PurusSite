@@ -73,6 +73,70 @@ function YahooLogo() {
   )
 }
 
+function BraveLogo() {
+  return (
+    <svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
+      <circle cx="16" cy="16" r="16" fill="#FB542B"/>
+      <path d="M16 6 L22 10 L20 22 L16 25 L12 22 L10 10 Z" fill="white" opacity="0.9"/>
+      <path d="M13 14 L16 17 L19 14" stroke="#FB542B" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  )
+}
+
+function EcosiaLogo() {
+  return (
+    <svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
+      <circle cx="16" cy="16" r="16" fill="#4CAF50"/>
+      <path d="M16 8 L16 24 M10 14 Q16 10 22 14" stroke="white" strokeWidth="2" fill="none" strokeLinecap="round"/>
+      <path d="M10 18 Q16 14 22 18" stroke="white" strokeWidth="2" fill="none" strokeLinecap="round"/>
+    </svg>
+  )
+}
+
+function StartpageLogo() {
+  return (
+    <svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
+      <circle cx="16" cy="16" r="16" fill="#1565C0"/>
+      <text x="9" y="22" fontFamily="Georgia, serif" fontSize="18" fontWeight="bold" fill="white">S</text>
+    </svg>
+  )
+}
+
+function QwantLogo() {
+  return (
+    <svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
+      <circle cx="16" cy="16" r="16" fill="#5C3C9D"/>
+      <text x="8" y="22" fontFamily="Arial, sans-serif" fontSize="17" fontWeight="bold" fill="white">Q</text>
+    </svg>
+  )
+}
+
+function AskLogo() {
+  return (
+    <svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
+      <circle cx="16" cy="16" r="16" fill="#CC2222"/>
+      <text x="9" y="22" fontFamily="Arial, sans-serif" fontSize="17" fontWeight="bold" fill="white">A</text>
+    </svg>
+  )
+}
+
+function AOLLogo() {
+  return (
+    <svg width="52" height="32" viewBox="0 0 52 32" aria-hidden="true">
+      <text x="2" y="22" fontFamily="Arial, sans-serif" fontSize="17" fontWeight="bold" fill="#0066CC">AOL</text>
+    </svg>
+  )
+}
+
+function DogPileLogo() {
+  return (
+    <svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
+      <circle cx="16" cy="16" r="16" fill="#FF8C00"/>
+      <text x="9" y="22" fontFamily="Arial, sans-serif" fontSize="17" fontWeight="bold" fill="white">D</text>
+    </svg>
+  )
+}
+
 const platforms = [
   { name: 'Google',     logo: <GoogleLogo /> },
   { name: 'DuckDuckGo', logo: <DuckDuckGoLogo /> },
@@ -81,6 +145,13 @@ const platforms = [
   { name: 'Amazon',     logo: <AmazonLogo /> },
   { name: 'Bing',       logo: <BingLogo /> },
   { name: 'Yahoo',      logo: <YahooLogo /> },
+  { name: 'Brave',      logo: <BraveLogo /> },
+  { name: 'Ecosia',     logo: <EcosiaLogo /> },
+  { name: 'Startpage',  logo: <StartpageLogo /> },
+  { name: 'Qwant',      logo: <QwantLogo /> },
+  { name: 'Ask',        logo: <AskLogo /> },
+  { name: 'AOL',        logo: <AOLLogo /> },
+  { name: 'DogPile',    logo: <DogPileLogo /> },
 ]
 
 // Doubled so the seamless translateX(-50%) loop works
@@ -113,11 +184,11 @@ export default function FactSheet() {
           {carouselItems.map((p, i) => (
             <div
               key={i}
-              className="flex-shrink-0 flex items-center gap-3 bg-white border border-[var(--gray-mid)] rounded-full"
+              className="carousel-pill flex-shrink-0 flex items-center gap-3 bg-white border border-[var(--gray-mid)] rounded-full"
               style={{ whiteSpace: 'nowrap', padding: '16px 24px', minHeight: '56px' }}
             >
               {p.logo}
-              <span className="text-[var(--dark)]" style={{ fontSize: '15px', fontWeight: 500 }}>{p.name}</span>
+              <span className="carousel-pill-name text-[var(--dark)]" style={{ fontSize: '15px', fontWeight: 500 }}>{p.name}</span>
             </div>
           ))}
         </div>

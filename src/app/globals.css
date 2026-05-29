@@ -206,3 +206,24 @@ nav.purus-nav {
   animation: carousel-scroll 45s linear infinite;
   will-change: transform;
 }
+
+@media (max-width: 768px) {
+  .carousel-track {
+    gap: 24px;
+    animation-duration: 20s;
+  }
+
+  .carousel-pill {
+    padding: 10px 16px !important;
+    min-height: 40px !important;
+  }
+
+  .carousel-pill svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  .carousel-pill-name {
+    font-size: 12px !important;
+  }
+}

@@ -93,29 +93,11 @@ function EcosiaLogo() {
   )
 }
 
-function StartpageLogo() {
-  return (
-    <svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
-      <circle cx="16" cy="16" r="16" fill="#1565C0"/>
-      <text x="9" y="22" fontFamily="Georgia, serif" fontSize="18" fontWeight="bold" fill="white">S</text>
-    </svg>
-  )
-}
-
 function QwantLogo() {
   return (
     <svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
       <circle cx="16" cy="16" r="16" fill="#5C3C9D"/>
       <text x="8" y="22" fontFamily="Arial, sans-serif" fontSize="17" fontWeight="bold" fill="white">Q</text>
-    </svg>
-  )
-}
-
-function AskLogo() {
-  return (
-    <svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
-      <circle cx="16" cy="16" r="16" fill="#CC2222"/>
-      <text x="9" y="22" fontFamily="Arial, sans-serif" fontSize="17" fontWeight="bold" fill="white">A</text>
     </svg>
   )
 }
@@ -147,9 +129,7 @@ const platforms = [
   { name: 'Yahoo',      logo: <YahooLogo /> },
   { name: 'Brave',      logo: <BraveLogo /> },
   { name: 'Ecosia',     logo: <EcosiaLogo /> },
-  { name: 'Startpage',  logo: <StartpageLogo /> },
   { name: 'Qwant',      logo: <QwantLogo /> },
-  { name: 'Ask',        logo: <AskLogo /> },
   { name: 'AOL',        logo: <AOLLogo /> },
   { name: 'DogPile',    logo: <DogPileLogo /> },
 ]
@@ -193,6 +173,11 @@ export default function FactSheet() {
           ))}
         </div>
       </div>
+
+      {/* Trademark disclaimer */}
+      <p className="text-center max-w-2xl mx-auto px-6 mt-6" style={{ fontSize: '12px', color: 'var(--gray)' }}>
+        All third-party trademarks and logos are property of their respective owners. Purus is not affiliated with or endorsed by any of these companies.
+      </p>
 
     </section>
   )

@@ -109,7 +109,7 @@ function AudienceCard({ emoji, title, description }) {
 
 const STATS = [
   { value: '7',     label: 'Simultaneous filtering layers',      sub: 'No competitor runs more than 2–3' },
-  { value: '99%+',  label: 'Of explicit requests blocked',          sub: 'Across all seven filtering layers combined' },
+  { value: '99%+',  label: 'Of explicit requests blocked',          sub: 'Across all seven filtering layers combined*'},
   { value: '400+',  label: 'Keyword terms blocked',              sub: 'Across every major search engine' },
   { value: '60s',   label: 'From download to browsing clean',    sub: 'Onboard in seconds. No account needed.' },
 ]
@@ -226,6 +226,9 @@ export default function Home() {
           <p className="hero-reveal mt-8 text-xs text-[var(--gray)] tracking-wide">
             Free · iOS 16+ · No account required · On-device filtering
           </p>
+          <p className="hero-reveal mt-3 text-xs text-[var(--gray)] max-w-sm mx-auto leading-relaxed" style={{ opacity: 0.7 }}>
+            Purus significantly reduces exposure to explicit content but cannot guarantee complete filtering of all online content.
+          </p>
         </div>
       </section>
 
@@ -238,7 +241,7 @@ export default function Home() {
           <div className="text-center flex flex-col items-center gap-3 reveal">
             <p className="text-xs font-semibold text-[var(--blue)] uppercase tracking-widest">Built Different</p>
             <h2 className="font-display text-4xl md:text-5xl text-[var(--dark)] leading-tight max-w-2xl">
-              The Most Comprehensive Free Content Filter Available
+              The Most Comprehensive Free Content Filter Available*
             </h2>
             <p className="text-[var(--gray)] max-w-lg leading-relaxed">
               Purus stacks seven independent layers of protection — from DNS to keyword to
@@ -261,6 +264,9 @@ export default function Home() {
               </div>
             ))}
           </div>
+          <p style={{ fontSize: '11px', color: 'var(--gray)', marginTop: '4px' }}>
+            * Based on number of simultaneous filtering layers compared to publicly available consumer browser filters.
+          </p>
         </div>
       </section>
 
@@ -530,15 +536,18 @@ export default function Home() {
       {/* ══════════════════════════════════════
           FOOTER  (#0F1F3D)
       ══════════════════════════════════════ */}
-      <footer style={{ background: '#0F1F3D' }} className="px-6 py-10">
+      <footer className="px-6 py-10" style={{ background: 'var(--gray-light)', borderTop: '1px solid var(--gray-mid)' }}>
         <div className="max-w-5xl mx-auto flex flex-col items-center gap-4 text-center">
-          <span className="font-bold text-white text-lg tracking-tight">Purus</span>
-          <div className="flex items-center gap-6 text-sm" style={{ color: 'rgba(255,255,255,0.6)' }}>
-            <Link href="/privacy" className="hover:text-white">Privacy Policy</Link>
-            <a href="mailto:nicholas.purus@gmail.com" className="hover:text-white">Contact</a>
+          <span className="font-bold text-lg tracking-tight" style={{ color: '#2B5BA8' }}>Purus</span>
+          <div className="flex items-center gap-2 text-sm text-[var(--gray)]">
+            <Link href="/privacy" className="hover:text-[var(--dark)]">Privacy Policy</Link>
+            <span aria-hidden="true">|</span>
+            <Link href="/terms" className="hover:text-[var(--dark)]">Terms of Service</Link>
+            <span aria-hidden="true">|</span>
+            <a href="mailto:Purusaihq@gmail.com" className="hover:text-[var(--dark)]">Contact</a>
           </div>
-          <p className="text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>
-            © {new Date().getFullYear()} Purus. All rights reserved.
+          <p className="text-xs text-[var(--gray)]">
+            © 2026 Purus. All rights reserved.
           </p>
         </div>
       </footer>

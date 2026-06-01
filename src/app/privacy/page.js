@@ -16,12 +16,10 @@ export default function PrivacyPolicy() {
         <div className="mb-12">
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 text-sm text-[var(--gray)] hover:text-[var(--dark)] transition-colors mb-8"
+            className="inline-block text-sm mb-8 hover:underline"
+            style={{ color: '#2B5BA8' }}
           >
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 16 16">
-              <path d="M10 12L6 8l4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            Back to home
+            ← Back to Purus
           </Link>
           <p className="text-xs font-semibold text-[var(--blue)] uppercase tracking-widest mb-3">Legal</p>
           <h1 className="font-display text-4xl md:text-5xl text-[var(--dark)] leading-tight mb-4">
@@ -145,8 +143,8 @@ export default function PrivacyPolicy() {
             </p>
             <div className="mt-3 text-sm">
               <p className="font-semibold text-[var(--dark)]">Purus</p>
-              <a href="mailto:Nicholas.purus@gmail.com" className="text-[var(--blue)] hover:underline">
-                Nicholas.purus@gmail.com
+              <a href="mailto:nicholas.purus@gmail.com" className="text-[var(--blue)] hover:underline">
+                nicholas.purus@gmail.com
               </a>
             </div>
           </Section>

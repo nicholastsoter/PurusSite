@@ -560,6 +560,8 @@ export default function Home() {
             <span aria-hidden="true">|</span>
             <Link href="/terms" className="hover:text-[var(--dark)]">Terms of Service</Link>
             <span aria-hidden="true">|</span>
+            <Link href="/support" className="hover:text-[var(--dark)]">Support</Link>
+            <span aria-hidden="true">|</span>
             <a href="mailto:nicholas.purus@gmail.com" className="hover:text-[var(--dark)]">Contact</a>
           </div>
           <p className="text-xs text-[var(--gray)]">

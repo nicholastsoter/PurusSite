@@ -503,7 +503,7 @@ export default function Home() {
           <div>
             <FAQItem
               question="Will Purus slow down my browsing?"
-              answer="No. All filtering happens on-device before requests are made, so there's no round-trip to an external server to check content. In most cases Purus is actually faster than a standard browser because ads and trackers are blocked before they load."
+              answer="Most of Purus's filtering happens instantly on your device, with no delay. The one exception is DNS-level filtering, which checks domains through an encrypted connection — this can add a small delay the first time you visit a new site, similar to a VPN, though it speeds up quickly as your device caches results. Overall, most users don't notice a meaningful difference in everyday browsing."
             />
             <FAQItem
               question="What if a legitimate site gets blocked?"

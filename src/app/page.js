@@ -227,7 +227,7 @@ export default function Home() {
           </div>
 
           <p className="hero-reveal mt-8 text-xs text-[var(--gray)] tracking-wide">
-            Free · iOS 16+ · No account required · On-device filtering
+            iOS 16+ · No account required · On-device filtering
           </p>
           <p className="hero-reveal mt-3 text-xs text-[var(--gray)] max-w-sm mx-auto leading-relaxed" style={{ opacity: 0.7 }}>
             Purus significantly reduces exposure to explicit content but cannot guarantee complete filtering of all online content.
@@ -244,7 +244,7 @@ export default function Home() {
           <div className="text-center flex flex-col items-center gap-3 reveal">
             <p className="text-xs font-semibold text-[var(--blue)] uppercase tracking-widest">Built Different</p>
             <h2 className="font-display text-4xl md:text-5xl text-[var(--dark)] leading-tight max-w-2xl">
-              The Most Comprehensive Free Content Filter Available*
+              The Most Comprehensive Content Filter Available*
             </h2>
             <p className="text-[var(--gray)] max-w-lg leading-relaxed">
               Purus stacks eight independent layers of protection — from DNS to keyword to
@@ -420,7 +420,7 @@ export default function Home() {
           <FeatureCard
             icon={<svg className="w-5 h-5" fill="none" viewBox="0 0 20 20"><path d="M10 2a6 6 0 00-6 6v1H3a1 1 0 00-1 1v6a1 1 0 001 1h14a1 1 0 001-1v-6a1 1 0 00-1-1h-1V8a6 6 0 00-6-6z" stroke="currentColor" strokeWidth="1.5" /></svg>}
             title="No account. No subscription."
-            description="Free. No email, no credit card, no cloud account. Download and it works."
+            description="No email, no cloud account. Download and it works."
           />
         </div>
       </Section>
@@ -512,8 +512,8 @@ export default function Home() {
               answer="No. The filtering layers are built into the browser at a level that cannot be toggled off by the user. Safe search, DNS filtering, and the keyword scanner are always on. The only way to disable filtering is to delete the app."
             />
             <FAQItem
-              question="Is Purus free?"
-              answer="The core browser is free to download with no account required — eight filtering layers, safe search locked, and ad blocking all included at no cost. We're building a parent dashboard with additional controls and reporting for families who want more visibility. That will be a paid tier when it launches. For now, everything you need to browse clean is free."
+              question="Does Purus require a subscription?"
+              answer="No subscription — Purus is a one-time purchase with no account required. Eight filtering layers, safe search locked, and ad blocking all included. We're building a parent dashboard with additional controls and reporting for families who want more visibility. That will be a separate tier when it launches."
             />
           </div>
         </div>

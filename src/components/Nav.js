@@ -56,7 +56,7 @@ export default function Nav() {
             href="#download"
             className="btn-spring text-sm font-medium bg-[var(--blue)] text-white px-4 py-2 rounded-full hover:bg-[var(--blue-dark)]"
           >
-            Download Free
+            Download
           </a>
 
           {/* Hamburger — mobile only */}

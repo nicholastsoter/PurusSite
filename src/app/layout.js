@@ -17,7 +17,7 @@ const dmSerif = DM_Serif_Display({
 export const metadata = {
   title: 'Purus — A Browser You Can Trust',
   description:
-    'Purus is a free iOS browser that automatically blocks explicit content, ads, and unsafe searches across four filtering layers. No setup. No account. No subscription.',
+    'Purus is an iOS browser that automatically blocks explicit content, ads, and unsafe searches across eight filtering layers. No setup. No account. No subscription.',
   metadataBase: new URL('https://www.purusai.com'),
   openGraph: {
     title: 'Purus — A Browser You Can Trust',

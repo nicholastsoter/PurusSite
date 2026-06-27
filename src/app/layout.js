@@ -27,9 +27,7 @@ export const metadata = {
     siteName: 'Purus',
     images: [
       {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
+        url: '/purus-logo.jpg',
         alt: 'Purus — A Browser You Can Trust',
       },
     ],
@@ -40,7 +38,7 @@ export const metadata = {
     title: 'Purus — A Browser You Can Trust',
     description:
       'A cleaner web, on by default. Purus blocks virtually every explicit domain, ad, and unsafe search before it loads.',
-    images: ['/og-image.png'],
+    images: ['/purus-logo.jpg'],
   },
   icons: {
     icon: '/favicon.png',

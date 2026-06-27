@@ -8,15 +8,15 @@ const slides = [
   },
   {
     src: '/screenshot-2.png',
-    caption: 'Four layers of protection.',
+    caption: 'Set as your default.',
   },
   {
     src: '/screenshot-3.png',
-    caption: 'Safe search. Always strict.',
+    caption: 'Optional Safari restriction.',
   },
   {
     src: '/screenshot-4.png',
-    caption: 'Simple setup. One time.',
+    caption: 'Safe search, always strict.',
   },
   {
     src: '/screenshot-5.png',

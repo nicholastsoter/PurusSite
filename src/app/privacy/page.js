@@ -25,7 +25,7 @@ export default function PrivacyPolicy() {
           <h1 className="font-display text-4xl md:text-5xl text-[var(--dark)] leading-tight mb-4">
             Privacy Policy
           </h1>
-          <p className="text-sm text-[var(--gray)]">Effective date: May 23, 2026 · Last updated: May 23, 2026</p>
+          <p className="text-sm text-[var(--gray)]">Effective date: May 23, 2026 · Last updated: June 26, 2026</p>
         </div>
 
         {/* Summary callout */}
@@ -56,12 +56,27 @@ export default function PrivacyPolicy() {
                 Purus periodically fetches updated content filter rule sets from our servers to keep blocking rules current. These requests contain no user-identifying information and no browsing data. Only a standard network request is made to check for and download updated rules.
               </p>
             </Subsection>
+            {/* REVIEW BEFORE LAUNCH: Confirm whether false positive reporting is a native in-app
+                flow or still routes through a Google Form. Update this paragraph accordingly.
+                If still using Google Forms, restore the Google privacy policy link below. */}
             <Subsection title="False positive reports">
               <p className="text-sm leading-7">
-                If you tap "Report it" on a blocked page, you are directed to a Google Form where you may optionally submit the blocked URL. This submission is voluntary, anonymous, and handled by Google. We receive only the URL you choose to report. Google's privacy policy applies to that form submission and can be reviewed at{' '}
-                <a href="https://policies.google.com/privacy" className="text-[var(--blue)] hover:underline" target="_blank" rel="noopener noreferrer">
-                  policies.google.com/privacy
-                </a>.
+                If you tap &quot;Report it&quot; on a blocked page, you may submit the blocked URL directly through the app. This submission is voluntary.
+              </p>
+            </Subsection>
+            <Subsection title="Optional search suggestions">
+              <p className="text-sm leading-7">
+                If you enable &quot;Search Suggestions&quot; in Settings, partial text you type into the search bar is sent to your selected search engine (Google or DuckDuckGo) to retrieve autocomplete suggestions as you type. This feature is off by default. When disabled, suggestions are generated only from your own on-device search history, which never leaves your device. Your use of this feature when enabled is subject to your selected search engine&apos;s own privacy policy.
+              </p>
+            </Subsection>
+            <Subsection title="Voice search">
+              <p className="text-sm leading-7">
+                If you use the microphone to search by voice, your speech is processed entirely on-device using Apple&apos;s on-device speech recognition. Your voice is never transmitted to Purus or any third-party server for this feature.
+              </p>
+            </Subsection>
+            <Subsection title="Downloads and Photos access">
+              <p className="text-sm leading-7">
+                If you choose to save an image from a webpage, Purus requests access to your Photos library solely to save that image at your direction. Purus does not browse, scan, or access any other content in your Photos library.
               </p>
             </Subsection>
             <Subsection title="App analytics">
@@ -73,16 +88,16 @@ export default function PrivacyPolicy() {
 
           <Section title="3. How Filtering Works">
             <p className="text-sm leading-7">
-              All content filtering in Purus operates entirely on your device through three mechanisms: a locally stored block list checked against every web request, a DNS proxy that routes domain lookups through a privacy-respecting filtered resolver (CleanBrowsing), and a search query filter that enforces safe search parameters before queries are sent to search engines. None of these mechanisms send your data to Purus. DNS queries are resolved through CleanBrowsing's servers; their privacy policy is available at{' '}
-              <a href="https://cleanbrowsing.org/privacy" className="text-[var(--blue)] hover:underline" target="_blank" rel="noopener noreferrer">
-                cleanbrowsing.org/privacy
+              All content filtering in Purus operates entirely on your device through multiple mechanisms: a locally stored block list and compiled content rule list checked against every web request, a DNS proxy that routes domain lookups through AdGuard&apos;s Family Protection filtered resolver, a keyword filter that scans search queries against a list of blocked terms, and a search query filter that enforces safe search parameters before queries are sent to search engines. None of these mechanisms send your data to Purus. DNS queries are resolved through AdGuard&apos;s servers under their Family Protection configuration; their privacy policy is available at{' '}
+              <a href="https://adguard.com/en/privacy/dns.html" className="text-[var(--blue)] hover:underline" target="_blank" rel="noopener noreferrer">
+                adguard.com/en/privacy/dns.html
               </a>.
             </p>
           </Section>
 
           <Section title="4. Data Storage">
             <p className="text-sm leading-7">
-              Purus stores only two types of data locally on your device: the content filter rule set files used for blocking decisions, and your app preferences such as whether you have completed onboarding. No data is stored on Purus servers. No account or login is required.
+              Purus stores only the following data locally on your device: the content filter rule set files used for blocking decisions, your bookmarks and tab data, your local search history (used only for on-device suggestions, never transmitted), and your app preferences such as whether you have completed onboarding and your enabled feature settings. No data is stored on Purus servers. No account or login is required.
             </p>
           </Section>
 
@@ -92,10 +107,15 @@ export default function PrivacyPolicy() {
             </p>
             <ul className="text-sm leading-7 space-y-3 list-disc pl-5">
               <li>
-                <strong className="text-[var(--dark)]">CleanBrowsing:</strong> Provides filtered DNS resolution. Your DNS queries pass through their resolver. No browsing history is retained by CleanBrowsing under their family filter configuration.
+                <strong className="text-[var(--dark)]">AdGuard DNS Family Protection:</strong> Provides filtered DNS resolution via a system Network Extension. Your DNS queries pass through their resolver under their family filter configuration. Review AdGuard&apos;s privacy policy for details on their data handling.
               </li>
               <li>
-                <strong className="text-[var(--dark)]">Google Forms:</strong> Used only when you voluntarily submit a false positive report. Governed by Google's privacy policy.
+                <strong className="text-[var(--dark)]">Google and/or DuckDuckGo:</strong> If you enable optional search suggestions, partial search text is sent to your selected search engine to retrieve autocomplete results. Governed by that search engine&apos;s own privacy policy.
+              </li>
+              {/* REVIEW BEFORE LAUNCH: Replace this list item with the actual reporting mechanism
+                  once confirmed — native in-app flow or Google Forms. */}
+              <li>
+                <strong className="text-[var(--dark)]">False positive reporting:</strong> Used only when you voluntarily submit a false positive report through the in-app reporting feature.
               </li>
             </ul>
             <p className="text-sm leading-7 mt-4">
@@ -105,13 +125,13 @@ export default function PrivacyPolicy() {
 
           <Section title="6. Children's Privacy">
             <p className="text-sm leading-7">
-              Purus is designed to be safe for users of all ages, including children. We do not knowingly collect personal information from anyone, including children under 13. Because no account or personal information is required to use Purus, the app is appropriate for use by minors under parental supervision.
+              Purus is designed to be safe for users of all ages, including children. We do not knowingly collect personal information from anyone, including children under 13. Because no account or personal information is required to use Purus, the app is appropriate for use by minors under parental supervision. Purus is a tool intended to support parental oversight and is not a substitute for direct parental supervision of a minor&apos;s device use.
             </p>
           </Section>
 
           <Section title="7. Your Rights">
             <p className="text-sm leading-7 mb-5">
-              Because Purus does not collect personal information, there is no personal data for us to provide, correct, or delete. If you have submitted a false positive report via the Google Form and wish to have it removed, contact us at the email below and we will delete it from our records.
+              Because Purus does not collect personal information, there is no personal data for us to provide, correct, or delete. If you have submitted a false positive report and wish to have it removed, contact us at the email below.
             </p>
             <Subsection title="California Residents (CCPA/CPRA)">
               <p className="text-sm leading-7">
@@ -120,7 +140,7 @@ export default function PrivacyPolicy() {
             </Subsection>
             <Subsection title="EU/UK Residents (GDPR)">
               <p className="text-sm leading-7">
-                Our lawful basis for processing any data (limited to filter list update requests) is legitimate interest in providing a functioning service. No personal data is processed in connection with these requests.
+                Our lawful basis for processing any data (limited to filter list update requests and, if enabled, search suggestion requests routed through third-party search engines) is legitimate interest in providing a functioning service. No personal data is processed by Purus in connection with these requests.
               </p>
             </Subsection>
           </Section>

@@ -107,10 +107,13 @@ function AudienceCard({ emoji, title, description }) {
   )
 }
 
+// REVIEW BEFORE LAUNCH: The '99%+' figure below is an unverified marketing claim.
+// WKContentRuleList and AdGuard DNS blocking rates cannot be measured from inside the app.
+// Confirm with product/legal whether this is substantiated before shipping.
 const STATS = [
-  { value: '7',     label: 'Simultaneous filtering layers',      sub: 'No competitor runs more than 2–3' },
-  { value: '99%+',  label: 'Of explicit requests blocked',          sub: 'Across all seven filtering layers combined*'},
-  { value: '400+',  label: 'Keyword terms blocked',              sub: 'Across every major search engine' },
+  { value: '8',     label: 'Simultaneous filtering layers',      sub: 'No competitor runs more than 2–3' },
+  { value: '99%+',  label: 'Of explicit requests blocked',       sub: 'Across all eight filtering layers combined*' },
+  { value: '507',   label: 'Keyword patterns blocked',           sub: 'Across every major search engine' },
   { value: '60s',   label: 'From download to browsing clean',    sub: 'Onboard in seconds. No account needed.' },
 ]
 
@@ -118,7 +121,7 @@ const CHECK_ITEMS = [
   'Safe Search locked on Google — cannot be disabled',
   'Safe Search enforced on DuckDuckGo',
   'YouTube Restricted Mode always on',
-  '400+ blocked keyword terms',
+  '507 blocked keyword patterns',
   'No browsing data leaves your phone',
   'No account, no cloud sync, no tracking',
 ]
@@ -244,7 +247,7 @@ export default function Home() {
               The Most Comprehensive Free Content Filter Available*
             </h2>
             <p className="text-[var(--gray)] max-w-lg leading-relaxed">
-              Purus stacks seven independent layers of protection — from DNS to keyword to
+              Purus stacks eight independent layers of protection — from DNS to keyword to
               cookie enforcement — so nothing slips through.
             </p>
           </div>
@@ -322,16 +325,23 @@ export default function Home() {
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <div>
             <div className="reveal">
-              <p className="text-xs font-semibold text-[var(--blue)] uppercase tracking-widest mb-3">Four layers</p>
+              <p className="text-xs font-semibold text-[var(--blue)] uppercase tracking-widest mb-3">Eight layers</p>
               <h2 className="font-display text-4xl md:text-5xl text-[var(--dark)] leading-tight mb-8">
                 Every page. Every search. Every time.
               </h2>
             </div>
             <div className="flex flex-col gap-7" data-cascade-parent data-cascade-delay="120">
               <LayerStep number="1" title="Block List" description="Every request is checked against thousands of known explicit domains and ad networks before anything loads." />
+              {/* REVIEW BEFORE LAUNCH: The 93.8% figure below comes from AdGuard's published stats
+                  and cannot be independently verified from inside the app. Confirm with product/legal
+                  whether citing a third-party's claim here is appropriate before shipping. */}
               <LayerStep number="2" title="DNS Filtering" description="All domain lookups route through AdGuard Family Protection, blocking 93.8% of explicit domains at the network level." />
-              <LayerStep number="3" title="Keyword Filter" description="Every search query typed anywhere in the browser is scanned against 400+ blocked terms." />
+              <LayerStep number="3" title="Keyword Filter" description="Every search query typed anywhere in the browser is scanned against 507 blocked keyword patterns." />
               <LayerStep number="4" title="URL Inspector" description="Every navigation is checked for known bad domains, suspicious paths, and redirect chains." />
+              <LayerStep number="5" title="Cosmetic Filtering" description="CSS-level rules hide explicit images, banners, and embedded elements that pass the domain block list — so even a clean-looking URL can't surface unwanted content." />
+              <LayerStep number="6" title="Safe Search Enforcement" description="Safe Search is locked at the URL level across Google, DuckDuckGo, Bing, Yahoo, and every other supported engine — users cannot toggle it off." />
+              <LayerStep number="7" title="YouTube Restricted Mode" description="Every YouTube request is rewritten to force Restricted Mode, filtering adult-flagged videos from all feeds, search results, and recommendations." />
+              <LayerStep number="8" title="Platform-Specific Filtering" description="Reddit is restricted to safe communities and Amazon search results exclude adult product categories before the page renders." />
             </div>
           </div>
 
@@ -357,6 +367,7 @@ export default function Home() {
                 </li>
               ))}
             </ul>
+            {/* REVIEW BEFORE LAUNCH: Same unverified 99% claim as in STATS — needs product/legal sign-off. */}
             <p className="mt-5 text-xs text-[var(--gray)] text-center leading-relaxed">
               Designed to stop 99% of explicit content before it loads — automatically, on every request.
             </p>
@@ -385,7 +396,7 @@ export default function Home() {
           />
           <FeatureCard
             icon={<svg className="w-5 h-5" fill="none" viewBox="0 0 20 20"><path d="M4 5h12M4 10h12M4 15h8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>}
-            title="Up to 10 persistent tabs"
+            title="Up to 16 persistent tabs"
             description="Safari-style tab switcher. Tabs stay open across app launches, just like you'd expect."
           />
           <FeatureCard
@@ -398,6 +409,9 @@ export default function Home() {
             title="Your choice of search engine"
             description="Use DuckDuckGo (private, default) or Google. Both have Safe Search permanently locked."
           />
+          {/* REVIEW BEFORE LAUNCH: Verify whether false positive reporting is a native
+              in-app flow (a tap on the blocked-page screen) or still routes to a Google Form.
+              Copy must match the actual UX — update this description before shipping. */}
           <FeatureCard
             icon={<svg className="w-5 h-5" fill="none" viewBox="0 0 20 20"><path d="M10 2l2 6h6l-5 3.5 2 6L10 14l-5 3.5 2-6L2 8h6z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" /></svg>}
             title="False positive reporting"
@@ -499,7 +513,7 @@ export default function Home() {
             />
             <FAQItem
               question="Is Purus free?"
-              answer="The core browser is free to download with no account required — four filtering layers, safe search locked, and ad blocking all included at no cost. We're building a parent dashboard with additional controls and reporting for families who want more visibility. That will be a paid tier when it launches. For now, everything you need to browse clean is free."
+              answer="The core browser is free to download with no account required — eight filtering layers, safe search locked, and ad blocking all included at no cost. We're building a parent dashboard with additional controls and reporting for families who want more visibility. That will be a paid tier when it launches. For now, everything you need to browse clean is free."
             />
           </div>
         </div>
@@ -517,7 +531,7 @@ export default function Home() {
             The web, without the parts you don't want.
           </h2>
           <p className="text-[var(--gray)] mb-10 text-lg max-w-lg mx-auto">
-            Four filtering layers, no setup, no subscription. Built to block virtually every encounter before it happens.
+            Eight filtering layers, no setup, no subscription. Built to block virtually every encounter before it happens.
           </p>
           <a
             href="#"
@@ -544,7 +558,7 @@ export default function Home() {
             <span aria-hidden="true">|</span>
             <Link href="/terms" className="hover:text-[var(--dark)]">Terms of Service</Link>
             <span aria-hidden="true">|</span>
-            <a href="mailto:Purusaihq@gmail.com" className="hover:text-[var(--dark)]">Contact</a>
+            <a href="mailto:nicholas.purus@gmail.com" className="hover:text-[var(--dark)]">Contact</a>
           </div>
           <p className="text-xs text-[var(--gray)]">
             © 2026 Purus. All rights reserved.

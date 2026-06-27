@@ -148,7 +148,7 @@ export default function FactSheet() {
         </h3>
         <p className="text-[var(--gray)] leading-relaxed max-w-xl">
           Purus doesn&apos;t just suggest safe search — it locks it in at every layer so
-          users can&apos;t bypass it.
+          it can&apos;t be casually turned off.
         </p>
       </div>
 

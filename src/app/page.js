@@ -112,13 +112,12 @@ function AudienceCard({ emoji, title, description }) {
 // Confirm with product/legal whether this is substantiated before shipping.
 const STATS = [
   { value: '8',     label: 'Simultaneous filtering layers',      sub: 'No competitor runs more than 2–3' },
-  { value: '99%+',  label: 'Of explicit requests blocked',       sub: 'Across all eight filtering layers combined*' },
   { value: '507',   label: 'Keyword patterns blocked',           sub: 'Across every major search engine' },
-  { value: '60s',   label: 'From download to browsing clean',    sub: 'Onboard in seconds. No account needed.' },
+  { value: '60s',   label: 'From download to browsing clean',    sub: 'A minute or two to set up. No account needed.' },
 ]
 
 const CHECK_ITEMS = [
-  'Safe Search locked on Google — cannot be disabled',
+  'Safe Search locked on Google by default.',
   'Safe Search enforced on DuckDuckGo',
   'YouTube Restricted Mode always on',
   '507 blocked keyword patterns',
@@ -207,7 +206,7 @@ export default function Home() {
 
           <p className="hero-reveal text-lg md:text-xl text-[var(--gray)] max-w-xl mx-auto mb-10 leading-relaxed">
             Purus blocks explicit content, ads, and unsafe searches automatically.
-            No setup. No account. No subscription.
+            Minimal setup. No account. No subscription.
           </p>
 
           <div id="download" className="hero-reveal flex flex-col sm:flex-row gap-3 justify-center items-center">
@@ -244,14 +243,14 @@ export default function Home() {
           <div className="text-center flex flex-col items-center gap-3 reveal">
             <p className="text-xs font-semibold text-[var(--blue)] uppercase tracking-widest">Built Different</p>
             <h2 className="font-display text-4xl md:text-5xl text-[var(--dark)] leading-tight max-w-2xl">
-              The Most Comprehensive Content Filter Available*
+              One of the Most Comprehensive Content Filters Available*
             </h2>
             <p className="text-[var(--gray)] max-w-lg leading-relaxed">
               Purus stacks eight independent layers of protection — from DNS to keyword to
               cookie enforcement — so nothing slips through.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5" data-cascade-parent data-cascade-delay="100">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5" data-cascade-parent data-cascade-delay="100">
             {STATS.map((s) => (
               <div
                 key={s.value}
@@ -369,7 +368,7 @@ export default function Home() {
             </ul>
             {/* REVIEW BEFORE LAUNCH: Same unverified 99% claim as in STATS — needs product/legal sign-off. */}
             <p className="mt-5 text-xs text-[var(--gray)] text-center leading-relaxed">
-              Designed to stop 99% of explicit content before it loads — automatically, on every request.
+              Built to stop the vast majority of explicit content before it loads — automatically, on every request.
             </p>
           </div>
         </div>
@@ -402,7 +401,7 @@ export default function Home() {
           <FeatureCard
             icon={<svg className="w-5 h-5" fill="none" viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2z" stroke="currentColor" strokeWidth="1.5" /><path d="M6.5 10.5S8 12 10 12s3.5-1.5 3.5-1.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /><path d="M7.5 7.5v.5M12.5 7.5v.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg>}
             title="One-time onboarding"
-            description="Setup takes seconds. After that, you never see it again."
+            description="Setup takes a minute or two. After that, it's out of your way."
           />
           <FeatureCard
             icon={<svg className="w-5 h-5" fill="none" viewBox="0 0 20 20"><circle cx="10" cy="10" r="3" stroke="currentColor" strokeWidth="1.5" /><path d="M10 2v2M10 16v2M2 10h2M16 10h2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>}
@@ -415,7 +414,7 @@ export default function Home() {
           <FeatureCard
             icon={<svg className="w-5 h-5" fill="none" viewBox="0 0 20 20"><path d="M10 2l2 6h6l-5 3.5 2 6L10 14l-5 3.5 2-6L2 8h6z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" /></svg>}
             title="False positive reporting"
-            description="One tap to report a legitimate site that got blocked. We review and fix it."
+            description="One tap to report a legitimate site that got blocked. We review every report and update our filters accordingly."
           />
           <FeatureCard
             icon={<svg className="w-5 h-5" fill="none" viewBox="0 0 20 20"><path d="M10 2a6 6 0 00-6 6v1H3a1 1 0 00-1 1v6a1 1 0 001 1h14a1 1 0 001-1v-6a1 1 0 00-1-1h-1V8a6 6 0 00-6-6z" stroke="currentColor" strokeWidth="1.5" /></svg>}
@@ -441,13 +440,16 @@ export default function Home() {
           </div>
           <div className="reveal">
             <p className="text-[var(--gray)] leading-relaxed mb-5">
-              Purus started from a simple frustration: existing tools for filtering explicit content were either too complicated, too expensive, or too easy to work around. Parental control suites require accounts, subscriptions, and configuration. VPNs are overkill. Browser extensions are easy to disable.
+              Purus started from a simple frustration: existing tools for filtering explicit content were either too complicated, too expensive, or too easy to work around. Parental control suites require accounts, subscriptions, and ongoing configuration. VPNs are overkill. Browser extensions are easy to disable.
             </p>
             <p className="text-[var(--gray)] leading-relaxed mb-5">
-              We wanted something simpler. A browser that is just safe by default. No special mode to activate. No settings to configure correctly. You install it, go through a short onboarding, and from that point on you never encounter explicit content, intrusive ads, or unsafe search results.
+              We wanted something simpler. A browser that's safe from the moment you set it up. Onboarding takes a minute or two — including one quick step in iOS Settings to activate protection at the network level — and after that, Purus works automatically in the background every time you browse.
+            </p>
+            <p className="text-[var(--gray)] leading-relaxed mb-5">
+              Every filtering decision happens on your device. Nothing about what you search or browse is transmitted to Purus servers, because we don't have any. Purus is a native iOS app, and the filtering stack runs entirely in-app.
             </p>
             <p className="text-[var(--gray)] leading-relaxed mb-10">
-              Every filtering decision happens on your device. Nothing about what you search or browse is transmitted to Purus servers, because we don't have any. Purus is a native iOS app, and the filtering stack runs entirely in-app.
+              No filter is perfect, and Purus doesn't claim to catch everything. What it does is stack eight independent layers of protection so that the vast majority of explicit content, intrusive ads, and unsafe searches are blocked automatically, without you having to think about it.
             </p>
             <div className="inline-flex items-center gap-2 text-sm text-[var(--gray)] bg-[var(--gray-light)] border border-[var(--gray-mid)] px-4 py-2.5 rounded-full">
               <ShieldIcon className="w-4 h-4 text-[var(--blue)]" />

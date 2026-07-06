@@ -111,7 +111,7 @@ function AudienceCard({ emoji, title, description }) {
 // WKContentRuleList and AdGuard DNS blocking rates cannot be measured from inside the app.
 // Confirm with product/legal whether this is substantiated before shipping.
 const STATS = [
-  { value: '8',     label: 'Simultaneous filtering layers',      sub: 'No competitor runs more than 2–3' },
+  { value: '8',     label: 'Simultaneous filtering layers',      sub: 'Most competitors don\'t run more than 2-3' },
   { value: '507',   label: 'Keyword patterns blocked',           sub: 'Across every major search engine' },
   { value: '60s',   label: 'From download to browsing clean',    sub: 'A minute or two to set up. No account needed.' },
 ]
@@ -507,7 +507,7 @@ export default function Home() {
             />
             <FAQItem
               question="What if a legitimate site gets blocked?"
-              answer="It happens occasionally. Tap 'Report it' on the blocked page and we review it within 24 hours. False positive reports go directly to our block list team and the site is usually cleared in the next filter update."
+              answer="It happens occasionally. Tap 'Report it' on the blocked page and we review it quickly. False positive reports go directly to our block list team and the site is usually cleared in the next filter update."
             />
             <FAQItem
               question="Can my child turn off the filtering?"
@@ -515,7 +515,7 @@ export default function Home() {
             />
             <FAQItem
               question="Does Purus require a subscription?"
-              answer="No subscription — Purus is a one-time purchase with no account required. Eight filtering layers, safe search locked, and ad blocking all included. We're building a parent dashboard with additional controls and reporting for families who want more visibility. That will be a separate tier when it launches."
+              answer="No subscription — Purus is a one-time download with no account required. Eight filtering layers, safe search locked, and ad blocking all included. We're building a parent dashboard with additional controls and reporting for families who want more visibility. That will be a separate tier when it launches."
             />
           </div>
         </div>

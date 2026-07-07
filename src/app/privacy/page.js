@@ -25,14 +25,14 @@ export default function PrivacyPolicy() {
           <h1 className="font-display text-4xl md:text-5xl text-[var(--dark)] leading-tight mb-4">
             Privacy Policy
           </h1>
-          <p className="text-sm text-[var(--gray)]">Effective date: May 23, 2026 · Last updated: June 26, 2026</p>
+          <p className="text-sm text-[var(--gray)]">Effective date: May 23, 2026 · Last updated: July 7, 2026</p>
         </div>
 
         {/* Summary callout */}
         <div className="bg-[#EBF4FF] border border-blue-100 rounded-2xl p-6 mb-10">
           <h2 className="font-semibold text-[var(--dark)] mb-2">Our core commitment</h2>
           <p className="text-sm leading-relaxed text-[var(--gray)]">
-            Purus is a content-filtering browser for iOS. Your browsing stays on your device. We do not collect, store, or transmit your browsing history, search queries, or any personally identifiable information.
+            Purus is a content-filtering browser for iOS. Your browsing stays on your device. Purus does not operate servers that collect, store, or transmit your browsing history, search queries, or any personally identifiable information. A small number of filtering features make limited, functional requests to third-party servers — never to Purus — and each one is described below.
           </p>
         </div>
 
@@ -41,7 +41,7 @@ export default function PrivacyPolicy() {
 
           <Section title="1. What Purus Does">
             <p className="text-sm leading-7">
-              Purus is a web browser that filters explicit content, ads, and trackers on your device. All content filtering happens locally using on-device rule sets and a DNS proxy. No images, URLs, or browsing history are ever transmitted to Purus or any third party for analysis.
+              Purus is a web browser that filters explicit content, ads, and trackers on your device. Content filtering decisions — matching against block lists, keyword filters, and content rules — happen entirely on your device. Purus does not transmit your images, URLs, or browsing history to Purus servers or to any third party for analysis. A few filtering mechanisms make narrow, functional network requests as part of how they work; these are described in Section 3.
             </p>
           </Section>
 
@@ -53,12 +53,19 @@ export default function PrivacyPolicy() {
             </Subsection>
             <Subsection title="Filter list updates">
               <p className="text-sm leading-7">
-                Purus periodically fetches updated content filter rule sets from our servers to keep blocking rules current. These requests contain no user-identifying information and no browsing data. Only a standard network request is made to check for and download updated rules.
+                Purus can periodically fetch updated content filter rule sets from our servers to keep blocking rules current. This feature is not currently active in the app. When active, these requests contain no user-identifying information and no browsing data — only a standard request to check for and download updated rule files.
               </p>
             </Subsection>
-            {/* REVIEW BEFORE LAUNCH: Confirm whether false positive reporting is a native in-app
-                flow or still routes through a Google Form. Update this paragraph accordingly.
-                If still using Google Forms, restore the Google privacy policy link below. */}
+            <Subsection title="Redirect and shortened-link resolution">
+              <p className="text-sm leading-7">
+                When Purus detects a shortened link (such as a bit.ly or t.co URL) or a URL containing a redirect parameter, it sends a single request directly to the destination server to determine where the link leads, so it can be checked against our filtering rules before you&apos;re taken there. This request goes to the destination site, not to Purus, and contains nothing beyond what any website normally receives when you visit it (such as your IP address).
+              </p>
+            </Subsection>
+            <Subsection title="Shortcut icons">
+              <p className="text-sm leading-7">
+                When you add a website to your Shortcuts, Purus requests that site&apos;s icon from Google&apos;s favicon service using only the site&apos;s domain name. No other information is sent.
+              </p>
+            </Subsection>
             <Subsection title="False positive reports">
               <p className="text-sm leading-7">
                 If you tap &quot;Report it&quot; on a blocked page, you may submit the blocked URL directly through the app. This submission is voluntary.
@@ -88,7 +95,7 @@ export default function PrivacyPolicy() {
 
           <Section title="3. How Filtering Works">
             <p className="text-sm leading-7">
-              All content filtering in Purus operates entirely on your device through multiple mechanisms: a locally stored block list and compiled content rule list checked against every web request, a DNS proxy that routes domain lookups through AdGuard&apos;s Family Protection filtered resolver, a keyword filter that scans search queries against a list of blocked terms, and a search query filter that enforces safe search parameters before queries are sent to search engines. None of these mechanisms send your data to Purus. DNS queries are resolved through AdGuard&apos;s servers under their Family Protection configuration; their privacy policy is available at{' '}
+              All content filtering in Purus operates entirely on your device through multiple mechanisms: a locally stored block list and compiled content rule list checked against every web request, a DNS proxy that routes domain lookups through AdGuard&apos;s Family Protection filtered resolver, a keyword filter that scans search queries against a list of blocked terms, a search query filter that enforces safe search parameters before queries are sent to search engines, and a redirect-resolution check that contacts a link&apos;s destination server directly when the URL looks like a shortened or redirect-wrapped link, so it can be evaluated before you&apos;re taken there. None of these mechanisms send your data to Purus. DNS queries are resolved through AdGuard&apos;s servers under their Family Protection configuration; their privacy policy is available at{' '}
               <a href="https://adguard.com/en/privacy/dns.html" className="text-[var(--blue)] hover:underline" target="_blank" rel="noopener noreferrer">
                 adguard.com/en/privacy/dns.html
               </a>.
@@ -120,7 +127,7 @@ export default function PrivacyPolicy() {
 
           <Section title="5. Data Storage">
             <p className="text-sm leading-7">
-              Purus stores only the following data locally on your device: the content filter rule set files used for blocking decisions, your bookmarks and tab data, your local search history (used only for on-device suggestions, never transmitted), and your app preferences such as whether you have completed onboarding and your enabled feature settings. No data is stored on Purus servers. No account or login is required.
+              Purus stores only the following data locally on your device: the content filter rule set files used for blocking decisions, your bookmarks, reading list, and tab data, your download history, your local search history (used only for on-device suggestions, never transmitted), and your app preferences such as whether you have completed onboarding and your enabled feature settings. No data is stored on Purus servers. No account or login is required.
             </p>
           </Section>
 
@@ -133,10 +140,14 @@ export default function PrivacyPolicy() {
                 <strong className="text-[var(--dark)]">AdGuard DNS Family Protection:</strong> Provides filtered DNS resolution via a system Network Extension. Your DNS queries pass through their resolver under their family filter configuration. Review AdGuard&apos;s privacy policy for details on their data handling.
               </li>
               <li>
-                <strong className="text-[var(--dark)]">Google and/or DuckDuckGo:</strong> If you enable optional search suggestions, partial search text is sent to your selected search engine to retrieve autocomplete results. Governed by that search engine&apos;s own privacy policy.
+                <strong className="text-[var(--dark)]">Google and/or DuckDuckGo (search suggestions):</strong> If you enable optional search suggestions, partial search text is sent to your selected search engine to retrieve autocomplete results. Governed by that search engine&apos;s own privacy policy.
               </li>
-              {/* REVIEW BEFORE LAUNCH: Replace this list item with the actual reporting mechanism
-                  once confirmed — native in-app flow or Google Forms. */}
+              <li>
+                <strong className="text-[var(--dark)]">Google Favicon Service:</strong> When you add a shortcut, Purus requests that site&apos;s icon from Google using only the domain name of the shortcut.
+              </li>
+              <li>
+                <strong className="text-[var(--dark)]">Redirect and shortlink destination servers:</strong> When resolving a shortened or redirect-wrapped link, Purus contacts the destination server directly to determine where it leads, prior to evaluating it against filtering rules.
+              </li>
               <li>
                 <strong className="text-[var(--dark)]">False positive reporting:</strong> Used only when you voluntarily submit a false positive report through the in-app reporting feature.
               </li>
@@ -163,14 +174,14 @@ export default function PrivacyPolicy() {
             </Subsection>
             <Subsection title="EU/UK Residents (GDPR)">
               <p className="text-sm leading-7">
-                Our lawful basis for processing any data (limited to filter list update requests and, if enabled, search suggestion requests routed through third-party search engines) is legitimate interest in providing a functioning service. No personal data is processed by Purus in connection with these requests.
+                Our lawful basis for processing any data (limited to filter list update requests when enabled, redirect-resolution requests, favicon requests, and, if enabled, search suggestion requests routed through third-party search engines) is legitimate interest in providing a functioning service. No personal data is processed by Purus in connection with these requests.
               </p>
             </Subsection>
           </Section>
 
           <Section title="9. Security">
             <p className="text-sm leading-7">
-              All network requests made by Purus, including filter list updates, use encrypted HTTPS connections. Because no personal data is collected or stored on our servers, the risk of a data breach affecting your personal information is minimal.
+              All network requests made by Purus, including filter list updates when enabled, use encrypted HTTPS connections. Because no personal data is collected or stored on our servers, the risk of a data breach affecting your personal information is minimal.
             </p>
           </Section>
 

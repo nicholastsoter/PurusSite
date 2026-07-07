@@ -95,13 +95,36 @@ export default function PrivacyPolicy() {
             </p>
           </Section>
 
-          <Section title="4. Data Storage">
+          <Section title="4. Social Media Filtering">
+            <p className="text-sm leading-7">
+              Purus applies keyword-based search filtering to a select group of supported platforms. The following platforms are actively filtered:
+            </p>
+            <ul className="text-sm leading-7 space-y-2 list-disc pl-5 mt-2">
+              <li><strong className="text-[var(--dark)]">YouTube</strong> — Restricted Mode enforced, safe search locked, explicit searches blocked</li>
+              <li><strong className="text-[var(--dark)]">Facebook</strong> — Explicit searches blocked</li>
+              <li><strong className="text-[var(--dark)]">Reddit</strong> — Safe search enforced, NSFW communities blocked</li>
+            </ul>
+            <p className="text-sm leading-7">
+              The following platforms are blocked entirely in Purus due to content safety concerns — users who navigate to these platforms will see a Purus block page:
+            </p>
+            <p className="text-sm leading-7 text-[var(--dark)] font-medium">
+              Instagram, TikTok, X (formerly Twitter), Snapchat, Pinterest, Tumblr
+            </p>
+            <p className="text-sm leading-7">
+              For supported platforms (YouTube, Facebook, Reddit), Purus filters active search queries using the same keyword patterns applied to standard web searches. However, Purus does not filter algorithmically-served feed content on Facebook — content that appears in a user&apos;s feed through recommendations or follows, rather than through an active search, is not evaluated or filtered by Purus. Users may encounter content in Facebook&apos;s feed that Purus&apos;s filtering layers do not catch.
+            </p>
+            <p className="text-sm leading-7">
+              Purus is not responsible for content served algorithmically by third-party platforms. Parents and guardians should be aware of this limitation when determining appropriate device usage for minors. For complete social media restriction, we recommend disabling Facebook via Screen Time in iOS Settings.
+            </p>
+          </Section>
+
+          <Section title="5. Data Storage">
             <p className="text-sm leading-7">
               Purus stores only the following data locally on your device: the content filter rule set files used for blocking decisions, your bookmarks and tab data, your local search history (used only for on-device suggestions, never transmitted), and your app preferences such as whether you have completed onboarding and your enabled feature settings. No data is stored on Purus servers. No account or login is required.
             </p>
           </Section>
 
-          <Section title="5. Third-Party Services">
+          <Section title="6. Third-Party Services">
             <p className="text-sm leading-7 mb-4">
               Purus integrates with the following third-party services in a limited capacity:
             </p>
@@ -123,13 +146,13 @@ export default function PrivacyPolicy() {
             </p>
           </Section>
 
-          <Section title="6. Children's Privacy">
+          <Section title="7. Children's Privacy">
             <p className="text-sm leading-7">
               Purus is designed to be safe for users of all ages, including children. We do not knowingly collect personal information from anyone, including children under 13. Because no account or personal information is required to use Purus, the app is appropriate for use by minors under parental supervision. Purus is a tool intended to support parental oversight and is not a substitute for direct parental supervision of a minor&apos;s device use.
             </p>
           </Section>
 
-          <Section title="7. Your Rights">
+          <Section title="8. Your Rights">
             <p className="text-sm leading-7 mb-5">
               Because Purus does not collect personal information, there is no personal data for us to provide, correct, or delete. If you have submitted a false positive report and wish to have it removed, contact us at the email below.
             </p>
@@ -145,19 +168,19 @@ export default function PrivacyPolicy() {
             </Subsection>
           </Section>
 
-          <Section title="8. Security">
+          <Section title="9. Security">
             <p className="text-sm leading-7">
               All network requests made by Purus, including filter list updates, use encrypted HTTPS connections. Because no personal data is collected or stored on our servers, the risk of a data breach affecting your personal information is minimal.
             </p>
           </Section>
 
-          <Section title="9. Changes to This Policy">
+          <Section title="10. Changes to This Policy">
             <p className="text-sm leading-7">
               We may update this Privacy Policy to reflect changes in the app or applicable law. Material changes will be noted with a revised effective date. Continued use of Purus after a policy update constitutes acceptance of the revised policy.
             </p>
           </Section>
 
-          <Section title="10. Contact">
+          <Section title="11. Contact">
             <p className="text-sm leading-7">
               For questions about this Privacy Policy, contact us at:
             </p>

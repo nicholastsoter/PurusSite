@@ -428,7 +428,7 @@ export default function Home() {
               <LayerStep number="5" title="Cosmetic Filtering" description="CSS-level rules hide explicit images, banners, and embedded elements that pass the domain block list — so even a clean-looking URL can't surface unwanted content." />
               <LayerStep number="6" title="Safe Search Enforcement" description="Safe Search is locked at the URL level across Google, DuckDuckGo, Bing, Yahoo, and every other supported engine — users cannot toggle it off." />
               <LayerStep number="7" title="YouTube Restricted Mode" description="Every YouTube request is rewritten to force Restricted Mode, filtering adult-flagged videos from all feeds, search results, and recommendations." />
-              <LayerStep number="8" title="Platform-Specific Filtering" description="Reddit is restricted to safe communities and Amazon search results exclude adult product categories before the page renders." />
+              <LayerStep number="8" title="Platform-Specific Filtering" description="Reddit is restricted to safe communities, Facebook search queries are filtered against the same keyword patterns used across all supported platforms, and Amazon search results exclude adult product categories before the page renders." />
             </div>
           </div>
 

@@ -99,7 +99,7 @@ export default function Support() {
               />
               <FAQItem
                 question="Can my child turn off the filtering?"
-                answer="No. The filtering layers are built into the browser at a level that cannot be toggled off by the user. Safe search, DNS filtering, and the keyword scanner are always on. The only way to disable filtering is to delete the app."
+                answer="No — filtering isn't a setting you can switch off. Keyword scanning, URL inspection, cosmetic filtering, safe search enforcement, YouTube Restricted Mode, and platform-specific filtering all run automatically on every request, with no toggle for any of them anywhere in the app. The one exception is DNS-level protection: it's opt-in, and once enabled it can still be removed through iOS's own Settings → VPN & Device Management — that's standard iOS behavior for any DNS configuration profile, not something specific to Purus."
               />
               <FAQItem
                 question="Does Purus require a subscription?"

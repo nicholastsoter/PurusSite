@@ -147,8 +147,7 @@ export default function FactSheet() {
           Safe search enforced everywhere you browse
         </h3>
         <p className="text-[var(--gray)] leading-relaxed max-w-xl">
-          Purus doesn&apos;t just suggest safe search — it locks it in at every layer so
-          it can&apos;t be casually turned off.
+          Purus doesn&apos;t just suggest safe search — it&apos;s enforced automatically across every engine you use, whether through direct safe-search enforcement or DNS and keyword-level protection.
         </p>
       </div>
 

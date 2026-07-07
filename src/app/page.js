@@ -117,11 +117,11 @@ const STATS = [
 ]
 
 const CHECK_ITEMS = [
-  'Safe Search locked on Google by default.',
+  'Safe Search enforced on Google by default.',
   'Safe Search enforced on DuckDuckGo',
   'YouTube Restricted Mode always on',
   '507 blocked keyword patterns',
-  'No browsing data leaves your phone',
+  'No browsing data is sent to Purus — we don\'t have servers to send it to.',
   'No account, no cloud sync, no tracking',
 ]
 
@@ -247,7 +247,7 @@ export default function Home() {
             </h2>
             <p className="text-[var(--gray)] max-w-lg leading-relaxed">
               Purus stacks eight independent layers of protection — from DNS to keyword to
-              cookie enforcement — so nothing slips through.
+              platform-specific filtering — so very little slips through.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5" data-cascade-parent data-cascade-delay="100">
@@ -419,14 +419,11 @@ export default function Home() {
             </div>
             <div className="flex flex-col gap-7" data-cascade-parent data-cascade-delay="120">
               <LayerStep number="1" title="Block List" description="Every request is checked against thousands of known explicit domains and ad networks before anything loads." />
-              {/* REVIEW BEFORE LAUNCH: The 93.8% figure below comes from AdGuard's published stats
-                  and cannot be independently verified from inside the app. Confirm with product/legal
-                  whether citing a third-party's claim here is appropriate before shipping. */}
-              <LayerStep number="2" title="DNS Filtering" description="All domain lookups route through AdGuard Family Protection, blocking 93.8% of explicit domains at the network level." />
+              <LayerStep number="2" title="DNS Filtering" description="All domain lookups route through AdGuard Family Protection, which blocks 93.8% of explicit domains at the network level according to AdGuard's own published data." />
               <LayerStep number="3" title="Keyword Filter" description="Every search query typed anywhere in the browser is scanned against 507 blocked keyword patterns." />
               <LayerStep number="4" title="URL Inspector" description="Every navigation is checked for known bad domains, suspicious paths, and redirect chains." />
               <LayerStep number="5" title="Cosmetic Filtering" description="CSS-level rules hide explicit images, banners, and embedded elements that pass the domain block list — so even a clean-looking URL can't surface unwanted content." />
-              <LayerStep number="6" title="Safe Search Enforcement" description="Safe Search is locked at the URL level across Google, DuckDuckGo, Bing, Yahoo, and every other supported engine — users cannot toggle it off." />
+              <LayerStep number="6" title="Safe Search Enforcement" description="Safe Search is enforced at the URL level across Google, DuckDuckGo, Bing, Yahoo, and Startpage. Every other search engine is protected through DNS-level domain blocking and keyword filtering applied to every search query." />
               <LayerStep number="7" title="YouTube Restricted Mode" description="Every YouTube request is rewritten to force Restricted Mode, filtering adult-flagged videos from all feeds, search results, and recommendations." />
               <LayerStep number="8" title="Platform-Specific Filtering" description="Reddit is restricted to safe communities, Facebook search queries are filtered against the same keyword patterns used across all supported platforms, and Amazon search results exclude adult product categories before the page renders." />
             </div>
@@ -539,10 +536,6 @@ export default function Home() {
             <p className="text-[var(--gray)] leading-relaxed mb-10">
               No filter is perfect, and Purus doesn't claim to catch everything. What it does is stack eight independent layers of protection so that the vast majority of explicit content, intrusive ads, and unsafe searches are blocked automatically, without you having to think about it.
             </p>
-            <div className="inline-flex items-center gap-2 text-sm text-[var(--gray)] bg-[var(--gray-light)] border border-[var(--gray-mid)] px-4 py-2.5 rounded-full">
-              <ShieldIcon className="w-4 h-4 text-[var(--blue)]" />
-              All filtering is on-device. Nothing leaves your phone.
-            </div>
           </div>
         </div>
       </Section>
@@ -599,7 +592,7 @@ export default function Home() {
             />
             <FAQItem
               question="Can my child turn off the filtering?"
-              answer="No. The filtering layers are built into the browser at a level that cannot be toggled off by the user. Safe search, DNS filtering, and the keyword scanner are always on. The only way to disable filtering is to delete the app."
+              answer="No — filtering isn't a setting you can switch off. Keyword scanning, URL inspection, cosmetic filtering, safe search enforcement, YouTube Restricted Mode, and platform-specific filtering all run automatically on every request, with no toggle for any of them anywhere in the app. The one exception is DNS-level protection: it's opt-in, and once enabled it can still be removed through iOS's own Settings → VPN & Device Management — that's standard iOS behavior for any DNS configuration profile, not something specific to Purus."
             />
             <FAQItem
               question="Does Purus require a subscription?"

@@ -139,7 +139,7 @@ const carouselItems = [...platforms, ...platforms]
 
 export default function FactSheet() {
   return (
-    <section className="py-16" style={{ background: 'var(--gray-light)' }}>
+    <section className="py-20" style={{ background: 'var(--gray-light)' }}>
 
       {/* Heading */}
       <div className="max-w-5xl mx-auto px-6 mb-10 reveal">
@@ -163,8 +163,13 @@ export default function FactSheet() {
           {carouselItems.map((p, i) => (
             <div
               key={i}
-              className="carousel-pill flex-shrink-0 flex items-center gap-3 bg-white border border-[var(--gray-mid)] rounded-full"
-              style={{ whiteSpace: 'nowrap', padding: '16px 24px', minHeight: '56px' }}
+              className="carousel-pill flex-shrink-0 flex items-center gap-2.5 bg-white rounded-full"
+              style={{
+                whiteSpace: 'nowrap',
+                padding: '12px 20px',
+                minHeight: '48px',
+                boxShadow: '0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.05)',
+              }}
             >
               {p.logo}
               <span className="carousel-pill-name text-[var(--dark)]" style={{ fontSize: '15px', fontWeight: 500 }}>{p.name}</span>

@@ -6,8 +6,7 @@ import { useState, useEffect } from 'react'
 const NAV_LINKS = [
   { href: '/', label: 'Home' },
   { href: '/#how-it-works', label: 'How it works' },
-  { href: '/#features', label: 'Features' },
-  { href: '/#about', label: 'About' },
+  { href: '/feedback', label: 'Feedback' },
 ]
 
 export default function Nav() {
@@ -84,7 +83,7 @@ export default function Nav() {
       {/* Mobile dropdown */}
       <div
         className="md:hidden overflow-hidden transition-all duration-300 ease-in-out"
-        style={{ maxHeight: open ? '200px' : '0px' }}
+        style={{ maxHeight: open ? '280px' : '0px' }}
       >
         <div className="bg-white border-t border-gray-100 px-6 py-4 flex flex-col gap-4">
           {NAV_LINKS.map(({ href, label }) => (

@@ -8,15 +8,16 @@ const slides = [
   },
   {
     src: '/screenshot-2.png',
-    caption: 'Set as your default.',
-  },
-  {
-    src: '/screenshot-3.png',
-    caption: 'Optional Safari restriction.',
+    caption: '8 filtering layers.',
   },
   {
     src: '/screenshot-4.png',
+    caption: 'Set your default browser.',
+  },
+  {
+    src: '/screenshot-3.png',
     caption: 'Safe search, always strict.',
+    objectPosition: 'top 12%',
   },
   {
     src: '/screenshot-5.png',
@@ -54,7 +55,8 @@ export default function AppCarousel() {
         {/* Prev arrow */}
         <button
           onClick={prev}
-          className="hidden md:flex w-10 h-10 rounded-full bg-white border border-gray-200 shadow-sm items-center justify-center hover:shadow-md transition-shadow text-gray-400 hover:text-gray-700"
+          className="hidden md:flex w-10 h-10 rounded-full bg-white items-center justify-center text-gray-400 hover:text-gray-700 transition-all duration-200 hover:-translate-y-0.5"
+          style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.07)' }}
           aria-label="Previous"
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 16 16">
@@ -64,10 +66,27 @@ export default function AppCarousel() {
 
         {/* Phone mockup */}
         <div className="relative" style={{ width: '220px' }}>
+          {/* Soft glow behind phone */}
+          <div
+            aria-hidden="true"
+            style={{
+              position: 'absolute',
+              inset: '-24px',
+              borderRadius: '50%',
+              background: 'radial-gradient(ellipse at center, rgba(27,108,242,0.12) 0%, transparent 70%)',
+              zIndex: 0,
+              pointerEvents: 'none',
+            }}
+          />
           {/* Phone shell */}
           <div
-            className="relative rounded-[2.8rem] overflow-hidden shadow-2xl border-[6px] border-gray-900 bg-white"
-            style={{ width: '220px', height: '476px' }}
+            className="relative rounded-[2.8rem] overflow-hidden border-[6px] border-gray-900 bg-white"
+            style={{
+              width: '220px',
+              height: '476px',
+              zIndex: 1,
+              boxShadow: '0 8px 16px rgba(0,0,0,0.12), 0 32px 64px rgba(0,0,0,0.22), 0 2px 4px rgba(0,0,0,0.08)',
+            }}
           >
             {/* Notch */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-5 bg-gray-900 rounded-b-2xl z-10" />
@@ -86,9 +105,9 @@ export default function AppCarousel() {
                     width: '100%',
                     height: '100%',
                     objectFit: 'cover',
-                    objectPosition: 'top',
+                    objectPosition: slide.objectPosition ?? 'top',
                     opacity: i === current ? 1 : 0,
-                    transition: 'opacity 0.4s ease',
+                    transition: 'opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1)',
                     willChange: 'opacity',
                   }}
                 />
@@ -97,15 +116,16 @@ export default function AppCarousel() {
           </div>
 
           {/* Side button details */}
-          <div className="absolute -right-[8px] top-16 w-[4px] h-10 bg-gray-800 rounded-r-sm" />
-          <div className="absolute -left-[8px] top-14 w-[4px] h-7 bg-gray-800 rounded-l-sm" />
-          <div className="absolute -left-[8px] top-24 w-[4px] h-7 bg-gray-800 rounded-l-sm" />
+          <div className="absolute -right-[8px] top-16 w-[4px] h-10 bg-gray-800 rounded-r-sm" style={{ zIndex: 1 }} />
+          <div className="absolute -left-[8px] top-14 w-[4px] h-7 bg-gray-800 rounded-l-sm" style={{ zIndex: 1 }} />
+          <div className="absolute -left-[8px] top-24 w-[4px] h-7 bg-gray-800 rounded-l-sm" style={{ zIndex: 1 }} />
         </div>
 
         {/* Next arrow */}
         <button
           onClick={next}
-          className="hidden md:flex w-10 h-10 rounded-full bg-white border border-gray-200 shadow-sm items-center justify-center hover:shadow-md transition-shadow text-gray-400 hover:text-gray-700"
+          className="hidden md:flex w-10 h-10 rounded-full bg-white items-center justify-center text-gray-400 hover:text-gray-700 transition-all duration-200 hover:-translate-y-0.5"
+          style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.07)' }}
           aria-label="Next"
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 16 16">

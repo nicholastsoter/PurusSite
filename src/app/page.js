@@ -65,17 +65,14 @@ function ShieldIcon({ className = '' }) {
 }
 
 /* ─── Feature card ─── */
-function FeatureCard({ icon, title, description }) {
+function FeatureCard({ title, description }) {
   return (
     <div
       data-cascade
-      className="card-reveal bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-md"
-      style={{ transition: 'box-shadow 200ms ease, opacity 0.55s cubic-bezier(0.22,1,0.36,1), transform 0.55s cubic-bezier(0.22,1,0.36,1)' }}
+      className="card-reveal pt-6 border-t border-[var(--gray-mid)]"
+      style={{ transition: 'opacity 0.55s cubic-bezier(0.22,1,0.36,1), transform 0.55s cubic-bezier(0.22,1,0.36,1)' }}
     >
-      <div className="w-10 h-10 rounded-xl bg-[var(--blue-light)] flex items-center justify-center mb-4 text-[var(--blue)]">
-        {icon}
-      </div>
-      <h3 className="font-semibold text-[var(--dark)] mb-1.5">{title}</h3>
+      <h3 className="font-semibold text-[var(--dark)] mb-2">{title}</h3>
       <p className="text-sm text-[var(--gray)] leading-relaxed">{description}</p>
     </div>
   )
@@ -97,11 +94,16 @@ function LayerStep({ number, title, description }) {
 }
 
 /* ─── Audience card ─── */
-function AudienceCard({ emoji, title, description }) {
+function AudienceCard({ icon, title, description }) {
   return (
-    <div data-cascade className="audience-reveal text-center px-4">
-      <div className="text-3xl mb-3">{emoji}</div>
-      <h4 className="font-semibold text-[var(--dark)] mb-1.5">{title}</h4>
+    <div
+      data-cascade
+      className="audience-reveal card-elevated bg-white rounded-2xl p-6 flex flex-col items-center text-center"
+    >
+      <div className="w-11 h-11 rounded-xl bg-[var(--blue-light)] flex items-center justify-center mb-4 text-[var(--blue)]">
+        {icon}
+      </div>
+      <h4 className="font-semibold text-[var(--dark)] mb-2">{title}</h4>
       <p className="text-sm text-[var(--gray)] leading-relaxed">{description}</p>
     </div>
   )
@@ -212,12 +214,13 @@ export default function Home() {
           <div id="download" className="hero-reveal flex flex-col sm:flex-row gap-3 justify-center items-center">
             <a
               href="#"
-              className="inline-block hover:opacity-80 transition-opacity"
+              className="btn-spring inline-block rounded-xl"
+              style={{ boxShadow: '0 2px 8px rgba(0,0,0,0.12)' }}
             >
               <img
                 src="/app-store-badge.svg"
                 alt="Download on the App Store"
-                style={{ height: '44px', width: 'auto' }}
+                style={{ height: '44px', width: 'auto', display: 'block' }}
               />
             </a>
             <a href="#how-it-works" className="text-sm text-[var(--gray)] hover:text-[var(--dark)] underline underline-offset-4">
@@ -238,7 +241,7 @@ export default function Home() {
       {/* ══════════════════════════════════════
           STAT CARDS  (below hero)
       ══════════════════════════════════════ */}
-      <section className="px-6 py-16">
+      <section className="px-6 py-20" style={{ background: 'var(--gray-light)' }}>
         <div className="max-w-5xl mx-auto flex flex-col gap-10">
           <div className="text-center flex flex-col items-center gap-3 reveal">
             <p className="text-xs font-semibold text-[var(--blue)] uppercase tracking-widest">Built Different</p>
@@ -255,8 +258,7 @@ export default function Home() {
               <div
                 key={s.value}
                 data-cascade
-                className="card-reveal bg-white border border-[var(--gray-mid)] rounded-2xl p-8 flex flex-col gap-2 hover:shadow-md"
-                style={{ transition: 'box-shadow 200ms ease, opacity 0.55s cubic-bezier(0.22,1,0.36,1), transform 0.55s cubic-bezier(0.22,1,0.36,1)' }}
+                className="card-reveal card-elevated bg-white rounded-2xl p-8 flex flex-col gap-2"
               >
                 <p className="font-display leading-none" style={{ fontSize: 'clamp(40px, 6vw, 56px)', color: 'var(--blue)' }}>
                   {s.value}
@@ -277,8 +279,6 @@ export default function Home() {
       ══════════════════════════════════════ */}
       <FactSheet />
 
-      {/* ── divider ── */}
-      <div className="max-w-5xl mx-auto px-6"><hr className="border-[var(--gray-mid)]" /></div>
 
       {/* ══════════════════════════════════════
           SOCIAL MEDIA
@@ -295,8 +295,7 @@ export default function Home() {
           {/* Supported platforms */}
           <div
             data-cascade
-            className="card-reveal bg-white border border-[var(--gray-mid)] rounded-2xl p-8 hover:shadow-md"
-            style={{ transition: 'box-shadow 200ms ease, opacity 0.55s cubic-bezier(0.22,1,0.36,1), transform 0.55s cubic-bezier(0.22,1,0.36,1)' }}
+            className="card-reveal card-elevated bg-white rounded-2xl p-8"
           >
             <p className="text-xs font-semibold text-[var(--blue)] uppercase tracking-widest mb-6">Active filtering</p>
             <div className="flex flex-col gap-6">
@@ -333,8 +332,7 @@ export default function Home() {
           {/* Blocked platforms */}
           <div
             data-cascade
-            className="card-reveal bg-[var(--gray-light)] border border-[var(--gray-mid)] rounded-2xl p-8"
-            style={{ transition: 'box-shadow 200ms ease, opacity 0.55s cubic-bezier(0.22,1,0.36,1), transform 0.55s cubic-bezier(0.22,1,0.36,1)' }}
+            className="card-reveal card-elevated bg-[var(--gray-light)] rounded-2xl p-8"
           >
             <p className="text-xs font-semibold text-[var(--gray)] uppercase tracking-widest mb-6">Blocked entirely</p>
             <div className="flex flex-col gap-4 mb-6">
@@ -365,34 +363,46 @@ export default function Home() {
         </p>
       </Section>
 
-      {/* ── divider ── */}
-      <div className="max-w-5xl mx-auto px-6"><hr className="border-[var(--gray-mid)]" /></div>
 
       {/* ══════════════════════════════════════
           WHO IT'S FOR
       ══════════════════════════════════════ */}
-      <Section className="py-24">
+      <Section className="py-24" style={{ background: 'var(--gray-light)' }}>
         <div className="text-center mb-14 reveal">
           <p className="text-xs font-semibold text-[var(--blue)] uppercase tracking-widest mb-3">Built for</p>
           <h2 className="font-display text-4xl md:text-5xl text-[var(--dark)] leading-tight">
             Anyone who wants a safer default.
           </h2>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10" data-cascade-parent data-cascade-delay="100">
-          <AudienceCard emoji="🛡️" title="Recovery" description="Meaningful friction for people working to stay free from pornography. Purus blocks the vast majority of explicit content before it ever appears." />
-          <AudienceCard emoji="👨‍👩‍👧" title="Parents" description="Hand a child an iPhone with Purus knowing that virtually every explicit domain, ad, and unsafe search is blocked before it loads." />
-          <AudienceCard emoji="🕊️" title="Faith communities" description="A browser aligned with values you already hold, without any extra configuration." />
-          <AudienceCard emoji="🧘" title="Anyone" description="Sometimes you just want a browser that doesn't make the web feel dangerous." />
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4" data-cascade-parent data-cascade-delay="100">
+          <AudienceCard
+            icon={<svg className="w-5 h-5" fill="none" viewBox="0 0 24 24"><path d="M12 2L4 6v5c0 4.5 3.5 8.7 8 9.9 4.5-1.2 8-5.4 8-9.9V6L12 2z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>}
+            title="Recovery"
+            description="Meaningful friction for people working to stay free from pornography. Purus blocks the vast majority of explicit content before it ever appears."
+          />
+          <AudienceCard
+            icon={<svg className="w-5 h-5" fill="none" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/><circle cx="9" cy="7" r="4" stroke="currentColor" strokeWidth="1.5"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>}
+            title="Parents"
+            description="Hand a child an iPhone with Purus knowing that virtually every explicit domain, ad, and unsafe search is blocked before it loads."
+          />
+          <AudienceCard
+            icon={<svg className="w-5 h-5" fill="none" viewBox="0 0 24 24"><path d="M12 22V12M12 12C12 7 7 4 3 6M12 12C12 7 17 4 21 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><circle cx="12" cy="5" r="2.5" stroke="currentColor" strokeWidth="1.5"/></svg>}
+            title="Faith communities"
+            description="A browser aligned with values you already hold, without any extra configuration."
+          />
+          <AudienceCard
+            icon={<svg className="w-5 h-5" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5" stroke="currentColor" strokeWidth="1.5"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>}
+            title="Anyone"
+            description="Sometimes you just want a browser that doesn't make the web feel dangerous."
+          />
         </div>
       </Section>
 
-      {/* ── divider ── */}
-      <div className="max-w-5xl mx-auto px-6"><hr className="border-[var(--gray-mid)]" /></div>
 
       {/* ══════════════════════════════════════
           APP CAROUSEL
       ══════════════════════════════════════ */}
-      <Section className="py-24">
+      <Section className="py-24" style={{ background: 'var(--blue-light)' }}>
         <div className="text-center mb-14 reveal">
           <p className="text-xs font-semibold text-[var(--blue)] uppercase tracking-widest mb-3">See it in action</p>
           <h2 className="font-display text-4xl md:text-5xl text-[var(--dark)] leading-tight">
@@ -402,8 +412,6 @@ export default function Home() {
         <AppCarousel />
       </Section>
 
-      {/* ── divider ── */}
-      <div className="max-w-5xl mx-auto px-6"><hr className="border-[var(--gray-mid)]" /></div>
 
       {/* ══════════════════════════════════════
           HOW IT WORKS
@@ -430,7 +438,8 @@ export default function Home() {
           </div>
 
           <div
-            className="reveal bg-[var(--gray-light)] rounded-3xl p-8 border border-[var(--gray-mid)]"
+            className="reveal bg-white rounded-3xl p-8"
+            style={{ boxShadow: '0 4px 8px rgba(0,0,0,0.06), 0 16px 40px rgba(0,0,0,0.10)' }}
             data-cascade-parent
             data-cascade-delay="60"
           >
@@ -459,37 +468,31 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* ── divider ── */}
-      <div className="max-w-5xl mx-auto px-6"><hr className="border-[var(--gray-mid)]" /></div>
 
       {/* ══════════════════════════════════════
           FEATURES
       ══════════════════════════════════════ */}
-      <Section id="features" className="py-24">
+      <Section id="features" className="py-24" style={{ background: 'var(--gray-light)' }}>
         <div className="text-center mb-14 reveal">
           <p className="text-xs font-semibold text-[var(--blue)] uppercase tracking-widest mb-3">Features</p>
           <h2 className="font-display text-4xl md:text-5xl text-[var(--dark)] leading-tight max-w-xl mx-auto">
             Built to stay out of your way.
           </h2>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5" data-cascade-parent data-cascade-delay="100">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12" data-cascade-parent data-cascade-delay="100">
           <FeatureCard
-            icon={<svg className="w-5 h-5" fill="none" viewBox="0 0 20 20"><rect x="2" y="3" width="16" height="14" rx="2.5" stroke="currentColor" strokeWidth="1.5" /><path d="M6 7h8M6 10h5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>}
             title="Clean browser interface"
             description="Minimal, distraction-free design that gets out of the way and lets you browse."
           />
           <FeatureCard
-            icon={<svg className="w-5 h-5" fill="none" viewBox="0 0 20 20"><path d="M4 5h12M4 10h12M4 15h8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>}
             title="Up to 16 persistent tabs"
             description="Safari-style tab switcher. Tabs stay open across app launches, just like you'd expect."
           />
           <FeatureCard
-            icon={<svg className="w-5 h-5" fill="none" viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2z" stroke="currentColor" strokeWidth="1.5" /><path d="M6.5 10.5S8 12 10 12s3.5-1.5 3.5-1.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /><path d="M7.5 7.5v.5M12.5 7.5v.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg>}
             title="One-time onboarding"
             description="Setup takes a minute or two. After that, it's out of your way."
           />
           <FeatureCard
-            icon={<svg className="w-5 h-5" fill="none" viewBox="0 0 20 20"><circle cx="10" cy="10" r="3" stroke="currentColor" strokeWidth="1.5" /><path d="M10 2v2M10 16v2M2 10h2M16 10h2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>}
             title="Your choice of search engine"
             description="Use DuckDuckGo (private, default) or Google. Both have Safe Search permanently locked."
           />
@@ -497,20 +500,16 @@ export default function Home() {
               in-app flow (a tap on the blocked-page screen) or still routes to a Google Form.
               Copy must match the actual UX — update this description before shipping. */}
           <FeatureCard
-            icon={<svg className="w-5 h-5" fill="none" viewBox="0 0 20 20"><path d="M10 2l2 6h6l-5 3.5 2 6L10 14l-5 3.5 2-6L2 8h6z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" /></svg>}
             title="False positive reporting"
             description="One tap to report a legitimate site that got blocked. We review every report and update our filters accordingly."
           />
           <FeatureCard
-            icon={<svg className="w-5 h-5" fill="none" viewBox="0 0 20 20"><path d="M10 2a6 6 0 00-6 6v1H3a1 1 0 00-1 1v6a1 1 0 001 1h14a1 1 0 001-1v-6a1 1 0 00-1-1h-1V8a6 6 0 00-6-6z" stroke="currentColor" strokeWidth="1.5" /></svg>}
             title="No account. No subscription."
             description="No email, no cloud account. Download and it works."
           />
         </div>
       </Section>
 
-      {/* ── divider ── */}
-      <div className="max-w-5xl mx-auto px-6"><hr className="border-[var(--gray-mid)]" /></div>
 
       {/* ══════════════════════════════════════
           ABOUT
@@ -540,16 +539,15 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* ── divider ── */}
-      <div className="max-w-5xl mx-auto px-6"><hr className="border-[var(--gray-mid)]" /></div>
 
       {/* ══════════════════════════════════════
           COMING SOON
       ══════════════════════════════════════ */}
-      <Section className="py-24">
+      <Section className="py-24" style={{ background: 'var(--blue-light)' }}>
         <div className="max-w-2xl mx-auto text-center">
           <div className="reveal">
-            <div className="inline-flex items-center gap-2 bg-[var(--gray-light)] border border-[var(--gray-mid)] text-[var(--gray)] text-xs font-semibold px-3 py-1.5 rounded-full mb-6 tracking-wide uppercase">
+            <div className="inline-flex items-center gap-1.5 bg-white text-[var(--blue)] text-xs font-semibold px-3.5 py-1.5 rounded-full mb-6 tracking-widest uppercase" style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.05)' }}>
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--blue)] inline-block" />
               Coming soon
             </div>
             <h2 className="font-display text-4xl md:text-5xl text-[var(--dark)] leading-tight mb-6">
@@ -567,13 +565,11 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* ── divider ── */}
-      <div className="max-w-5xl mx-auto px-6"><hr className="border-[var(--gray-mid)]" /></div>
 
       {/* ══════════════════════════════════════
           FAQ
       ══════════════════════════════════════ */}
-      <Section className="py-24">
+      <Section className="py-24" style={{ background: 'var(--gray-light)' }}>
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-14">
             <p className="text-xs font-semibold text-[var(--blue)] uppercase tracking-widest mb-3">FAQ</p>
@@ -581,7 +577,7 @@ export default function Home() {
               Questions.
             </h2>
           </div>
-          <div>
+          <div className="bg-white rounded-2xl px-8" style={{ boxShadow: '0 2px 4px rgba(0,0,0,0.05), 0 8px 24px rgba(0,0,0,0.08)' }}>
             <FAQItem
               question="Will Purus slow down my browsing?"
               answer="Most of Purus's filtering happens instantly on your device, with no delay. The one exception is DNS-level filtering, which checks domains through an encrypted connection — this can add a small delay the first time you visit a new site, similar to a VPN, though it speeds up quickly as your device caches results. Overall, most users don't notice a meaningful difference in everyday browsing."
@@ -602,8 +598,6 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* ── divider ── */}
-      <div className="max-w-5xl mx-auto px-6"><hr className="border-[var(--gray-mid)]" /></div>
 
       {/* ══════════════════════════════════════
           FINAL CTA
@@ -618,12 +612,13 @@ export default function Home() {
           </p>
           <a
             href="#"
-            className="inline-block hover:opacity-80 transition-opacity"
+            className="btn-spring inline-block rounded-xl"
+            style={{ boxShadow: '0 2px 8px rgba(0,0,0,0.12)' }}
           >
             <img
               src="/app-store-badge.svg"
               alt="Download on the App Store"
-              style={{ height: '44px', width: 'auto' }}
+              style={{ height: '44px', width: 'auto', display: 'block' }}
             />
           </a>
           <p className="mt-4 text-xs text-[var(--gray)]">Requires iOS 16 or later · iPhone</p>
@@ -642,6 +637,8 @@ export default function Home() {
             <Link href="/terms" className="hover:text-[var(--dark)]">Terms of Service</Link>
             <span aria-hidden="true">|</span>
             <Link href="/support" className="hover:text-[var(--dark)]">Support</Link>
+            <span aria-hidden="true">|</span>
+            <Link href="/feedback" className="hover:text-[var(--dark)]">Feedback</Link>
             <span aria-hidden="true">|</span>
             <a href="mailto:nicholas.purus@gmail.com" className="hover:text-[var(--dark)]">Contact</a>
           </div>

@@ -3,6 +3,8 @@ import Nav from '@/components/Nav'
 import Link from 'next/link'
 import { useState } from 'react'
 
+const GAS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzD3ldASbNXXVqzvatPQIzinRGCzwyY5w9S2Ws-Uk1k7S40GQJvP0lKBikJMEsj-n8t0A/exec'
+
 const CATEGORIES = [
   { value: 'bug', label: 'Bug report' },
   { value: 'false-positive', label: 'Content blocked incorrectly' },
@@ -25,7 +27,7 @@ export default function Feedback() {
     e.preventDefault()
     setStatus('submitting')
     try {
-      await fetch(process.env.NEXT_PUBLIC_FEEDBACK_ENDPOINT, {
+      await fetch(GAS_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'text/plain' },
         body: JSON.stringify({ timestamp: new Date().toISOString(), ...form }),

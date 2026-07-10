@@ -3,7 +3,7 @@ import Nav from '@/components/Nav'
 import Link from 'next/link'
 import { useState } from 'react'
 
-const GAS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzD3ldASbNXXVqzvatPQIzinRGCzwyY5w9S2Ws-Uk1k7S40GQJvP0lKBikJMEsj-n8t0A/exec'
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbzD3ldASbNXXVqzvatPQIzinRGCzwyY5w9S2Ws-Uk1k7S40GQJvP0lKBikJMEsj-n8t0A/exec'
 
 const CATEGORIES = [
   { value: 'bug', label: 'Bug report' },
@@ -17,7 +17,7 @@ const CHEVRON_BG = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000
 
 export default function Feedback() {
   const [form, setForm] = useState({ category: '', email: '', message: '' })
-  const [status, setStatus] = useState('idle') // idle | submitting | success | error
+  const [submitted, setSubmitted] = useState(false)
 
   const handleChange = (e) => {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }))
@@ -25,19 +25,13 @@ export default function Feedback() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    setStatus('submitting')
-    try {
-      await fetch(GAS_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'text/plain' },
-        body: JSON.stringify({ timestamp: new Date().toISOString(), ...form }),
-        mode: 'no-cors',
-      })
-      setStatus('success')
-      setForm({ category: '', email: '', message: '' })
-    } catch {
-      setStatus('error')
-    }
+    await fetch(GAS_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify({ timestamp: new Date().toISOString(), ...form }),
+      mode: 'no-cors',
+    })
+    setSubmitted(true)
   }
 
   return (
@@ -45,7 +39,6 @@ export default function Feedback() {
       <Nav />
 
       <div className="max-w-2xl mx-auto px-6 pt-36 pb-24">
-        {/* Header */}
         <div className="mb-12">
           <Link
             href="/"
@@ -63,7 +56,7 @@ export default function Feedback() {
           </p>
         </div>
 
-        {status === 'success' ? (
+        {submitted ? (
           <div className="rounded-2xl border border-[var(--gray-mid)] bg-[var(--gray-light)] p-10 text-center">
             <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[var(--blue-light)] mb-4">
               <svg className="w-6 h-6 text-[var(--blue)]" fill="none" viewBox="0 0 24 24">
@@ -75,7 +68,7 @@ export default function Feedback() {
               We got your message and will take a look.
             </p>
             <button
-              onClick={() => setStatus('idle')}
+              onClick={() => { setSubmitted(false); setForm({ category: '', email: '', message: '' }) }}
               className="text-sm font-medium text-[var(--blue)] hover:underline"
             >
               Send another
@@ -83,7 +76,6 @@ export default function Feedback() {
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Category */}
             <div>
               <label htmlFor="category" className="block text-sm font-medium text-[var(--dark)] mb-2">
                 Category <span className="text-[var(--blue)]">*</span>
@@ -110,7 +102,6 @@ export default function Feedback() {
               </select>
             </div>
 
-            {/* Email */}
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-[var(--dark)] mb-2">
                 Email{' '}
@@ -127,7 +118,6 @@ export default function Feedback() {
               />
             </div>
 
-            {/* Message */}
             <div>
               <label htmlFor="message" className="block text-sm font-medium text-[var(--dark)] mb-2">
                 Message <span className="text-[var(--blue)]">*</span>
@@ -144,28 +134,16 @@ export default function Feedback() {
               />
             </div>
 
-            {status === 'error' && (
-              <p className="text-sm text-red-500 leading-relaxed">
-                Something went wrong. Try again, or email us at{' '}
-                <a href="mailto:nicholas.purus@gmail.com" className="underline">
-                  nicholas.purus@gmail.com
-                </a>
-                .
-              </p>
-            )}
-
             <button
               type="submit"
-              disabled={status === 'submitting'}
-              className="w-full btn-spring text-sm font-medium bg-[var(--blue)] text-white px-6 py-3.5 rounded-full hover:bg-[var(--blue-dark)] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="w-full btn-spring text-sm font-medium bg-[var(--blue)] text-white px-6 py-3.5 rounded-full hover:bg-[var(--blue-dark)] transition-colors"
             >
-              {status === 'submitting' ? 'Sending…' : 'Send feedback'}
+              Send feedback
             </button>
           </form>
         )}
       </div>
 
-      {/* Footer */}
       <footer className="border-t border-[var(--gray-mid)] px-6 py-8">
         <div className="max-w-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <Link href="/" className="text-sm font-semibold text-[var(--dark)] hover:text-[var(--blue)] transition-colors">

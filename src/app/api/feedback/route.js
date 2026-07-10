@@ -22,11 +22,7 @@ export async function POST(request) {
     if ([301, 302, 307, 308].includes(res.status)) {
       const location = res.headers.get('location')
       if (location) {
-        res = await fetch(location, {
-          method: 'POST',
-          headers: { 'Content-Type': 'text/plain' },
-          body: payload,
-        })
+        res = await fetch(location, { method: 'GET' })
       }
     }
 

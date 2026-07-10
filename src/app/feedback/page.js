@@ -59,7 +59,12 @@ export default function Feedback() {
           </p>
         </div>
 
-        {submitted ? (
+        {submitting && !submitted ? (
+          <div className="flex flex-col items-center justify-center py-24 gap-4">
+            <div className="w-8 h-8 rounded-full border-2 border-[var(--gray-mid)] border-t-[var(--blue)] animate-spin" />
+            <p className="text-sm text-[var(--gray)]">Sending…</p>
+          </div>
+        ) : submitted ? (
           <div className="rounded-2xl border border-[var(--gray-mid)] bg-[var(--gray-light)] p-10 text-center">
             <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[var(--blue-light)] mb-4">
               <svg className="w-6 h-6 text-[var(--blue)]" fill="none" viewBox="0 0 24 24">
@@ -139,10 +144,9 @@ export default function Feedback() {
 
             <button
               type="submit"
-              disabled={submitting}
-              className="w-full btn-spring text-sm font-medium bg-[var(--blue)] text-white px-6 py-3.5 rounded-full hover:bg-[var(--blue-dark)] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="w-full btn-spring text-sm font-medium bg-[var(--blue)] text-white px-6 py-3.5 rounded-full hover:bg-[var(--blue-dark)] transition-colors"
             >
-              {submitting ? 'Sending…' : 'Send feedback'}
+              Send feedback
             </button>
           </form>
         )}

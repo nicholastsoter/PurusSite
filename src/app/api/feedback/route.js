@@ -21,12 +21,18 @@ export async function POST(request) {
 
     if ([301, 302, 307, 308].includes(res.status)) {
       const location = res.headers.get('location')
+      console.log('[feedback] redirect to', location)
       if (location) {
         res = await fetch(location, { method: 'GET' })
+        console.log('[feedback] echo status', res.status)
       }
+    } else {
+      console.log('[feedback] initial status', res.status)
     }
 
     if (!res.ok) {
+      const text = await res.text()
+      console.log('[feedback] upstream error body', text.slice(0, 300))
       return Response.json({ error: 'Upstream error', status: res.status }, { status: 502 })
     }
 

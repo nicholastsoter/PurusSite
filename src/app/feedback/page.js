@@ -6,6 +6,7 @@ import { useState } from 'react'
 const CATEGORIES = [
   { value: 'bug', label: 'Bug report' },
   { value: 'false-positive', label: 'Content blocked incorrectly' },
+  { value: 'false-negative', label: 'Content should have been blocked' },
   { value: 'feature', label: 'Feature request' },
   { value: 'other', label: 'Other' },
 ]

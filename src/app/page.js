@@ -94,16 +94,13 @@ function LayerStep({ number, title, description }) {
 }
 
 /* ─── Audience card ─── */
-function AudienceCard({ icon, title, description }) {
+function AudienceCard({ title, description }) {
   return (
     <div
       data-cascade
       className="audience-reveal card-elevated bg-white rounded-2xl p-6 flex flex-col items-center text-center"
     >
-      <div className="w-11 h-11 rounded-xl bg-[var(--blue-light)] flex items-center justify-center mb-4 text-[var(--blue)]">
-        {icon}
-      </div>
-      <h4 className="font-semibold text-[var(--dark)] mb-2">{title}</h4>
+      <h4 className="font-display text-xl text-[var(--dark)] mb-2">{title}</h4>
       <p className="text-sm text-[var(--gray)] leading-relaxed">{description}</p>
     </div>
   )
@@ -376,22 +373,18 @@ export default function Home() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4" data-cascade-parent data-cascade-delay="100">
           <AudienceCard
-            icon={<svg className="w-5 h-5" fill="none" viewBox="0 0 24 24"><path d="M12 2L4 6v5c0 4.5 3.5 8.7 8 9.9 4.5-1.2 8-5.4 8-9.9V6L12 2z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>}
             title="Recovery"
             description="Meaningful friction for people working to stay free from pornography. Purus blocks the vast majority of explicit content before it ever appears."
           />
           <AudienceCard
-            icon={<svg className="w-5 h-5" fill="none" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/><circle cx="9" cy="7" r="4" stroke="currentColor" strokeWidth="1.5"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>}
             title="Parents"
             description="Hand a child an iPhone with Purus knowing that virtually every explicit domain, ad, and unsafe search is blocked before it loads."
           />
           <AudienceCard
-            icon={<svg className="w-5 h-5" fill="none" viewBox="0 0 24 24"><path d="M12 22V12M12 12C12 7 7 4 3 6M12 12C12 7 17 4 21 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><circle cx="12" cy="5" r="2.5" stroke="currentColor" strokeWidth="1.5"/></svg>}
             title="Faith communities"
             description="A browser aligned with values you already hold, without any extra configuration."
           />
           <AudienceCard
-            icon={<svg className="w-5 h-5" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5" stroke="currentColor" strokeWidth="1.5"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>}
             title="Anyone"
             description="Sometimes you just want a browser that doesn't make the web feel dangerous."
           />

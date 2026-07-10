@@ -9,30 +9,17 @@ export async function POST(request) {
 
     const payload = JSON.stringify(body)
 
-    // Google Apps Script issues a 302 redirect on the initial POST.
-    // Node fetch with redirect:'follow' converts the reissued request to GET,
-    // so doPost never runs. We follow the redirect manually to keep POST.
-    let res = await fetch(endpoint, {
+    // GAS runs doPost on the initial POST, then issues a 302 to a googleusercontent
+    // echo URL where the response is stored. Node fetch with redirect:'follow' auto-
+    // converts to GET on 302, which is exactly what we want to retrieve the response.
+    const res = await fetch(endpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'text/plain' },
       body: payload,
-      redirect: 'manual',
+      redirect: 'follow',
     })
 
-    if ([301, 302, 307, 308].includes(res.status)) {
-      const location = res.headers.get('location')
-      console.log('[feedback] redirect to', location)
-      if (location) {
-        res = await fetch(location, { method: 'GET' })
-        console.log('[feedback] echo status', res.status)
-      }
-    } else {
-      console.log('[feedback] initial status', res.status)
-    }
-
     if (!res.ok) {
-      const text = await res.text()
-      console.log('[feedback] upstream error body', text.slice(0, 300))
       return Response.json({ error: 'Upstream error', status: res.status }, { status: 502 })
     }
 

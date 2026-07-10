@@ -25,12 +25,12 @@ export default function Feedback() {
     e.preventDefault()
     setStatus('submitting')
     try {
-      const res = await fetch('/api/feedback', {
+      await fetch(process.env.NEXT_PUBLIC_FEEDBACK_ENDPOINT, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'text/plain' },
         body: JSON.stringify({ timestamp: new Date().toISOString(), ...form }),
+        mode: 'no-cors',
       })
-      if (!res.ok) throw new Error('Submission failed')
       setStatus('success')
       setForm({ category: '', email: '', message: '' })
     } catch {

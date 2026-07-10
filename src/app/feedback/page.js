@@ -18,6 +18,7 @@ const CHEVRON_BG = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000
 export default function Feedback() {
   const [form, setForm] = useState({ category: '', email: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
 
   const handleChange = (e) => {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }))
@@ -25,6 +26,8 @@ export default function Feedback() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    if (submitting) return
+    setSubmitting(true)
     await fetch(GAS_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'text/plain' },
@@ -136,9 +139,10 @@ export default function Feedback() {
 
             <button
               type="submit"
-              className="w-full btn-spring text-sm font-medium bg-[var(--blue)] text-white px-6 py-3.5 rounded-full hover:bg-[var(--blue-dark)] transition-colors"
+              disabled={submitting}
+              className="w-full btn-spring text-sm font-medium bg-[var(--blue)] text-white px-6 py-3.5 rounded-full hover:bg-[var(--blue-dark)] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
-              Send feedback
+              {submitting ? 'Sending…' : 'Send feedback'}
             </button>
           </form>
         )}

@@ -150,7 +150,7 @@ export default function FilterColumnSection() {
       <div className="max-w-5xl mx-auto w-full px-6">
 
         {/* Static heading */}
-        <div style={{ marginBottom: 48 }}>
+        <div className="text-center md:text-left" style={{ marginBottom: 48 }}>
           <p style={{ fontSize: 11, fontWeight: 700, color: 'var(--blue)', textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 10 }}>
             Eight layers
           </p>

@@ -160,7 +160,7 @@ export default function FilterColumnSection() {
         </div>
 
         {/* Two-column layout */}
-        <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-start">
+        <div className="flex flex-row gap-6 md:gap-16 items-start">
 
           {/* ── Left: filtration column ── */}
           <div className="flex-shrink-0">
@@ -177,7 +177,7 @@ export default function FilterColumnSection() {
               Filtration Layers
             </p>
 
-            <div style={{ position: 'relative', height: TRACK_H, width: 120 }}>
+            <div style={{ position: 'relative', height: TRACK_H, width: 80 }}>
               {/* Background track */}
               <div
                 style={{

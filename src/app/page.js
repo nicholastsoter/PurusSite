@@ -50,19 +50,6 @@ function Section({ id, className = '', children, style }) {
   )
 }
 
-/* ─── Feature card ─── */
-function FeatureCard({ title, description }) {
-  return (
-    <div
-      data-cascade
-      className="card-reveal pt-6 border-t border-[var(--gray-mid)]"
-      style={{ transition: 'opacity 0.55s cubic-bezier(0.22,1,0.36,1), transform 0.55s cubic-bezier(0.22,1,0.36,1)' }}
-    >
-      <h3 className="font-semibold text-[var(--dark)] mb-2">{title}</h3>
-      <p className="text-sm text-[var(--gray)] leading-relaxed">{description}</p>
-    </div>
-  )
-}
 
 /* ─── Layer step ─── */
 /* ─── Audience card ─── */
@@ -233,15 +220,18 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Static heading — sits in normal flow above the pinned filter animation */}
-      <div id="how-it-works" className="px-6 pt-16 pb-4 bg-white">
-        <div className="max-w-5xl mx-auto">
-          <p className="text-xs font-semibold text-[var(--blue)] uppercase tracking-widest mb-3">Eight layers</p>
+      {/* ══════════════════════════════════════
+          APP CAROUSEL
+      ══════════════════════════════════════ */}
+      <Section className="py-24" style={{ background: 'var(--blue-light)' }}>
+        <div className="text-center mb-14 reveal">
+          <p className="text-xs font-semibold text-[var(--blue)] uppercase tracking-widest mb-3">See it in action</p>
           <h2 className="font-display text-4xl md:text-5xl text-[var(--dark)] leading-tight">
-            Every page. Every search. Every time.
+            Simple by design.
           </h2>
         </div>
-      </div>
+        <AppCarousel />
+      </Section>
 
       <FilterColumnSection />
 
@@ -361,59 +351,6 @@ export default function Home() {
           <AudienceCard
             title="Anyone"
             description="Sometimes you just want a browser that doesn't make the web feel dangerous."
-          />
-        </div>
-      </Section>
-
-
-      {/* ══════════════════════════════════════
-          APP CAROUSEL
-      ══════════════════════════════════════ */}
-      <Section className="py-24" style={{ background: 'var(--blue-light)' }}>
-        <div className="text-center mb-14 reveal">
-          <p className="text-xs font-semibold text-[var(--blue)] uppercase tracking-widest mb-3">See it in action</p>
-          <h2 className="font-display text-4xl md:text-5xl text-[var(--dark)] leading-tight">
-            Simple by design.
-          </h2>
-        </div>
-        <AppCarousel />
-      </Section>
-
-
-      {/* ══════════════════════════════════════
-          FEATURES
-      ══════════════════════════════════════ */}
-      <Section id="features" className="py-24" style={{ background: 'var(--gray-light)' }}>
-        <div className="text-center mb-14 reveal">
-          <p className="text-xs font-semibold text-[var(--blue)] uppercase tracking-widest mb-3">Features</p>
-          <h2 className="font-display text-4xl md:text-5xl text-[var(--dark)] leading-tight max-w-xl mx-auto">
-            Built to stay out of your way.
-          </h2>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12" data-cascade-parent data-cascade-delay="100">
-          <FeatureCard
-            title="Clean browser interface"
-            description="Minimal, distraction-free design that gets out of the way and lets you browse."
-          />
-          <FeatureCard
-            title="Up to 16 persistent tabs"
-            description="Safari-style tab switcher. Tabs stay open across app launches, just like you'd expect."
-          />
-          <FeatureCard
-            title="One-time onboarding"
-            description="Setup takes a minute or two. After that, it's out of your way."
-          />
-          <FeatureCard
-            title="Your choice of search engine"
-            description="Use DuckDuckGo (private, default) or Google. Both have Safe Search permanently locked."
-          />
-          <FeatureCard
-            title="False positive reporting"
-            description="One tap to report a legitimate site that got blocked. We review every report and update our filters accordingly."
-          />
-          <FeatureCard
-            title="No account. No subscription."
-            description="No email, no cloud account. Download and it works."
           />
         </div>
       </Section>

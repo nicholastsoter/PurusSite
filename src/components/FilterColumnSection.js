@@ -138,16 +138,26 @@ export default function FilterColumnSection() {
 
   return (
     <div
+      id="how-it-works"
       ref={sectionRef}
       style={{
         height: '100vh',
         display: 'flex',
-        alignItems: 'flex-start',
-        paddingTop: '56px',
+        alignItems: 'center',
         background: 'white',
       }}
     >
       <div className="max-w-5xl mx-auto w-full px-6">
+
+        {/* Static heading */}
+        <div style={{ marginBottom: 48 }}>
+          <p style={{ fontSize: 11, fontWeight: 700, color: 'var(--blue)', textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 10 }}>
+            Eight layers
+          </p>
+          <h2 className="font-display" style={{ fontSize: 'clamp(30px, 4vw, 52px)', color: 'var(--dark)', lineHeight: 1.1 }}>
+            Every page. Every search. Every time.
+          </h2>
+        </div>
 
         {/* Two-column layout */}
         <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-start">

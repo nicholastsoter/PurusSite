@@ -142,7 +142,8 @@ export default function FilterColumnSection() {
       style={{
         height: '100vh',
         display: 'flex',
-        alignItems: 'center',
+        alignItems: 'flex-start',
+        paddingTop: '56px',
         background: 'white',
       }}
     >

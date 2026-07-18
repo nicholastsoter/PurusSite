@@ -234,7 +234,7 @@ export default function Home() {
       </section>
 
       {/* Static heading — sits in normal flow above the pinned filter animation */}
-      <div id="how-it-works" className="px-6 pt-16 pb-10 bg-white">
+      <div id="how-it-works" className="px-6 pt-16 pb-4 bg-white">
         <div className="max-w-5xl mx-auto">
           <p className="text-xs font-semibold text-[var(--blue)] uppercase tracking-widest mb-3">Eight layers</p>
           <h2 className="font-display text-4xl md:text-5xl text-[var(--dark)] leading-tight">

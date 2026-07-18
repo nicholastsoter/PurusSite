@@ -50,21 +50,6 @@ function Section({ id, className = '', children, style }) {
   )
 }
 
-/* ─── Shield / lock icon ─── */
-function ShieldIcon({ className = '' }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path
-        d="M12 2L4 5.5V11c0 4.5 3.5 8.7 8 9.9 4.5-1.2 8-5.4 8-9.9V5.5L12 2z"
-        stroke="currentColor"
-        strokeWidth="1.75"
-        strokeLinejoin="round"
-      />
-      <path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  )
-}
-
 /* ─── Feature card ─── */
 function FeatureCard({ title, description }) {
   return (
@@ -80,20 +65,6 @@ function FeatureCard({ title, description }) {
 }
 
 /* ─── Layer step ─── */
-function LayerStep({ number, title, description }) {
-  return (
-    <div data-cascade className="reveal flex gap-5">
-      <div className="flex-shrink-0 w-9 h-9 rounded-full bg-[var(--blue)] text-white flex items-center justify-center text-sm font-semibold">
-        {number}
-      </div>
-      <div>
-        <h4 className="font-semibold text-[var(--dark)] mb-1">{title}</h4>
-        <p className="text-sm text-[var(--gray)] leading-relaxed">{description}</p>
-      </div>
-    </div>
-  )
-}
-
 /* ─── Audience card ─── */
 function AudienceCard({ title, description }) {
   return (
@@ -114,15 +85,6 @@ const STATS = [
   { value: '8',     label: 'Simultaneous filtering layers',      sub: 'Most competitors don\'t run more than 2-3' },
   { value: '507',   label: 'Keyword patterns blocked',           sub: 'Across every major search engine' },
   { value: '60s',   label: 'From download to browsing clean',    sub: 'A minute or two to set up. No account needed.' },
-]
-
-const CHECK_ITEMS = [
-  'Safe Search enforced on Google by default.',
-  'Safe Search enforced on DuckDuckGo',
-  'YouTube Restricted Mode always on',
-  '507 blocked keyword patterns',
-  'No browsing data is sent to Purus — we don\'t have servers to send it to.',
-  'No account, no cloud sync, no tracking',
 ]
 
 export default function Home() {
@@ -405,61 +367,6 @@ export default function Home() {
           </h2>
         </div>
         <AppCarousel />
-      </Section>
-
-
-      {/* ══════════════════════════════════════
-          HOW IT WORKS
-      ══════════════════════════════════════ */}
-      <Section id="how-it-works" className="py-24">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
-          <div>
-            <div className="reveal">
-              <p className="text-xs font-semibold text-[var(--blue)] uppercase tracking-widest mb-3">Eight layers</p>
-              <h2 className="font-display text-4xl md:text-5xl text-[var(--dark)] leading-tight mb-8">
-                Every page. Every search. Every time.
-              </h2>
-            </div>
-            <div className="flex flex-col gap-7" data-cascade-parent data-cascade-delay="120">
-              <LayerStep number="1" title="Block List" description="Every request is checked against thousands of known explicit domains and ad networks before anything loads." />
-              <LayerStep number="2" title="DNS Filtering" description="All domain lookups route through AdGuard Family Protection, which blocks 93.8% of explicit domains at the network level according to AdGuard's own published data." />
-              <LayerStep number="3" title="Keyword Filter" description="Every search query typed anywhere in the browser is scanned against 507 blocked keyword patterns." />
-              <LayerStep number="4" title="URL Inspector" description="Every navigation is checked for known bad domains, suspicious paths, and redirect chains." />
-              <LayerStep number="5" title="Cosmetic Filtering" description="CSS-level rules hide explicit images, banners, and embedded elements that pass the domain block list — so even a clean-looking URL can't surface unwanted content." />
-              <LayerStep number="6" title="Safe Search Enforcement" description="Safe Search is enforced at the URL level across Google, DuckDuckGo, Bing, Yahoo, and Startpage. Every other search engine is protected through DNS-level domain blocking and keyword filtering applied to every search query." />
-              <LayerStep number="7" title="YouTube Restricted Mode" description="Every YouTube request is rewritten to force Restricted Mode, filtering adult-flagged videos from all feeds, search results, and recommendations." />
-              <LayerStep number="8" title="Platform-Specific Filtering" description="Reddit is restricted to safe communities, Facebook search queries are filtered against the same keyword patterns used across all supported platforms, and Amazon search results exclude adult product categories before the page renders." />
-            </div>
-          </div>
-
-          <div
-            className="reveal bg-white rounded-3xl p-8"
-            style={{ boxShadow: '0 4px 8px rgba(0,0,0,0.06), 0 16px 40px rgba(0,0,0,0.10)' }}
-            data-cascade-parent
-            data-cascade-delay="60"
-          >
-            <div className="text-center mb-6">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[var(--blue-light)] mb-4">
-                <ShieldIcon className="w-8 h-8 text-[var(--blue)]" />
-              </div>
-              <p className="text-xs text-[var(--gray)] uppercase tracking-widest font-semibold">On-device. Always.</p>
-            </div>
-            <ul className="space-y-3.5 text-sm">
-              {CHECK_ITEMS.map((item) => (
-                <li key={item} data-cascade className="reveal flex items-start gap-2.5 text-[var(--gray)]">
-                  <svg className="w-4 h-4 mt-0.5 text-[var(--blue)] flex-shrink-0" fill="none" viewBox="0 0 16 16">
-                    <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5" />
-                    <path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <p className="mt-5 text-xs text-[var(--gray)] text-center leading-relaxed">
-              Built to stop the vast majority of explicit content before it loads — automatically, on every request.
-            </p>
-          </div>
-        </div>
       </Section>
 
 

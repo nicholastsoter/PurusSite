@@ -8,7 +8,7 @@ const LAYERS = [
   },
   {
     name: 'DNS Filtering',
-    desc: 'All domain lookups route through AdGuard Family Protection, blocking the large majority of explicit domains at the network level.',
+    desc: "All domain lookups route through AdGuard Family Protection, which blocks 93.8% of explicit domains at the network level according to AdGuard's own published data.",
   },
   {
     name: 'Keyword Filter',
@@ -20,20 +20,29 @@ const LAYERS = [
   },
   {
     name: 'Cosmetic Filtering',
-    desc: 'CSS-level rules hide explicit images and embedded elements that pass the domain block list.',
+    desc: "CSS-level rules hide explicit images, banners, and embedded elements that pass the domain block list — so even a clean-looking URL can't surface unwanted content.",
   },
   {
     name: 'Safe Search Enforcement',
-    desc: 'Safe Search is enforced at the URL level across every major engine, every time.',
+    desc: 'Safe Search is enforced at the URL level across Google, DuckDuckGo, Bing, Yahoo, and Startpage. Every other search engine is protected through DNS-level domain blocking and keyword filtering applied to every search query.',
   },
   {
     name: 'YouTube Restricted Mode',
-    desc: 'Every YouTube request is rewritten to force Restricted Mode across feeds and search.',
+    desc: 'Every YouTube request is rewritten to force Restricted Mode, filtering adult-flagged videos from all feeds, search results, and recommendations.',
   },
   {
     name: 'Platform-Specific Filtering',
-    desc: 'Reddit, Facebook, and Amazon each get filtering rules tuned to how content surfaces on that platform.',
+    desc: 'Reddit is restricted to safe communities, Facebook search queries are filtered against the same keyword patterns used across all supported platforms, and Amazon search results exclude adult product categories before the page renders.',
   },
+]
+
+const CHECK_ITEMS = [
+  'Safe Search enforced on Google by default.',
+  'Safe Search enforced on DuckDuckGo',
+  'YouTube Restricted Mode always on',
+  '507 blocked keyword patterns',
+  "No browsing data is sent to Purus — we don't have servers to send it to.",
+  'No account, no cloud sync, no tracking',
 ]
 
 // Murky slate at layer 1 → brand blue at layer 8
@@ -61,18 +70,6 @@ function lerpHex(a, b, t) {
 }
 
 export default function FilterColumnSection() {
-  /*
-    We use GSAP's pin:true (position:fixed) instead of CSS position:sticky.
-
-    The parent <main> has overflow-x:hidden, which per CSS spec promotes
-    overflow-y from visible→auto, making <main> the scroll container.
-    position:sticky is constrained to its scroll container — but <main> never
-    actually scrolls (the window does), so sticky degrades to position:relative
-    and the panel scrolls straight past the user.
-
-    position:fixed (what GSAP pin uses) is always relative to the viewport
-    initial containing block and is unaffected by any ancestor overflow value.
-  */
   const sectionRef = useRef(null)
   const dotRef = useRef(null)
   const filledRef = useRef(null)
@@ -89,13 +86,6 @@ export default function FilterColumnSection() {
       return
     }
 
-    /*
-      pinDuration = how many pixels the user scrolls while the panel is pinned.
-      Total page space = section height (100vh) + pinDuration, because GSAP's
-      pin inserts a spacer of exactly that total size.
-      Desktop: 4× viewport = 400vh total scroll (~50vh per layer).
-      Mobile:  3.2× viewport = 320vh total scroll (~40vh per layer).
-    */
     const isMobile = window.innerWidth < 768
     const pinDuration = Math.round(window.innerHeight * (isMobile ? 3.2 : 4))
 
@@ -109,21 +99,9 @@ export default function FilterColumnSection() {
           const dot = dotRef.current
           const filled = filledRef.current
 
-          console.log(
-            '[FilterColumn] pinDuration:', pinDuration + 'px',
-            '| vh:', window.innerHeight + 'px',
-            '| isMobile:', isMobile
-          )
-
           const st = ScrollTrigger.create({
             trigger: section,
             start: 'top top',
-            /*
-              pin:true tells GSAP to hold `section` fixed in the viewport
-              (via position:fixed) while the user scrolls `pinDuration` pixels.
-              GSAP inserts a spacer div to preserve page flow during the pin.
-              This bypasses the overflow-x:hidden scroll-container issue entirely.
-            */
             pin: true,
             end: '+=' + pinDuration,
             scrub: 0.6,
@@ -168,12 +146,8 @@ export default function FilterColumnSection() {
   }, [])
 
   return (
-    /*
-      Single 100vh div — GSAP takes this element, pins it (position:fixed),
-      and inserts a spacer of (100vh + pinDuration) in its place to preserve
-      the page scroll height. No outer wrapper with explicit height needed.
-    */
     <div
+      id="how-it-works"
       ref={sectionRef}
       style={{
         height: '100vh',
@@ -183,7 +157,35 @@ export default function FilterColumnSection() {
       }}
     >
       <div className="max-w-5xl mx-auto w-full px-6">
-        <div className="flex flex-col md:flex-row gap-10 md:gap-20 items-start md:items-center">
+
+        {/* Section heading */}
+        <div style={{ marginBottom: 28 }}>
+          <p
+            style={{
+              fontSize: 11,
+              fontWeight: 700,
+              color: 'var(--blue)',
+              textTransform: 'uppercase',
+              letterSpacing: '0.12em',
+              marginBottom: 8,
+            }}
+          >
+            Eight layers
+          </p>
+          <h2
+            className="font-display"
+            style={{
+              fontSize: 'clamp(22px, 2.8vw, 34px)',
+              color: 'var(--dark)',
+              lineHeight: 1.15,
+            }}
+          >
+            Every page. Every search. Every time.
+          </h2>
+        </div>
+
+        {/* Two-column layout */}
+        <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-start">
 
           {/* ── Left: filtration column ── */}
           <div className="flex-shrink-0">
@@ -194,15 +196,14 @@ export default function FilterColumnSection() {
                 color: 'var(--blue)',
                 textTransform: 'uppercase',
                 letterSpacing: '0.12em',
-                marginBottom: 20,
+                marginBottom: 16,
               }}
             >
               Filtration Layers
             </p>
 
-            {/* Track container */}
             <div style={{ position: 'relative', height: TRACK_H, width: 120 }}>
-              {/* Background track (gray) */}
+              {/* Background track */}
               <div
                 style={{
                   position: 'absolute',
@@ -215,7 +216,7 @@ export default function FilterColumnSection() {
                 }}
               />
 
-              {/* Filled (passed) track — grows downward as dot moves */}
+              {/* Filled (passed) track */}
               <div
                 ref={filledRef}
                 style={{
@@ -259,7 +260,7 @@ export default function FilterColumnSection() {
                 </div>
               ))}
 
-              {/* The dot — moved via direct DOM manipulation each scroll frame */}
+              {/* Dot */}
               <div
                 ref={dotRef}
                 style={{
@@ -278,46 +279,91 @@ export default function FilterColumnSection() {
             </div>
           </div>
 
-          {/* ── Right: current layer info ── */}
-          <div style={{ flex: 1 }}>
-            <p
-              style={{
-                fontSize: 11,
-                fontWeight: 700,
-                color: 'var(--blue)',
-                textTransform: 'uppercase',
-                letterSpacing: '0.12em',
-                marginBottom: 14,
-              }}
-            >
-              Layer {String(activeLayer + 1).padStart(2, '0')}
-            </p>
+          {/* ── Right: current layer info + summary card ── */}
+          <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+            <div>
+              <p
+                style={{
+                  fontSize: 11,
+                  fontWeight: 700,
+                  color: 'var(--blue)',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.12em',
+                  marginBottom: 12,
+                }}
+              >
+                Layer {String(activeLayer + 1).padStart(2, '0')}
+              </p>
 
-            {/* key= forces DOM replacement on layer change, triggering the CSS animation */}
-            <h3
-              key={`name-${activeLayer}`}
-              className="font-display filter-layer-in"
+              <h3
+                key={`name-${activeLayer}`}
+                className="font-display filter-layer-in"
+                style={{
+                  fontSize: 'clamp(26px, 3.5vw, 40px)',
+                  color: 'var(--dark)',
+                  lineHeight: 1.1,
+                  marginBottom: 14,
+                }}
+              >
+                {LAYERS[activeLayer].name}
+              </h3>
+              <p
+                key={`desc-${activeLayer}`}
+                className="filter-layer-in"
+                style={{
+                  fontSize: 16,
+                  color: 'var(--gray)',
+                  lineHeight: 1.7,
+                  maxWidth: 440,
+                }}
+              >
+                {LAYERS[activeLayer].desc}
+              </p>
+            </div>
+
+            {/* On-device summary card — desktop only */}
+            <div
+              className="hidden md:block"
               style={{
-                fontSize: 'clamp(30px, 4.5vw, 48px)',
-                color: 'var(--dark)',
-                lineHeight: 1.1,
-                marginBottom: 20,
+                marginTop: 24,
+                border: '1px solid var(--gray-mid)',
+                borderRadius: 12,
+                padding: '14px 16px',
+                maxWidth: 440,
               }}
             >
-              {LAYERS[activeLayer].name}
-            </h3>
-            <p
-              key={`desc-${activeLayer}`}
-              className="filter-layer-in"
-              style={{
-                fontSize: 18,
-                color: 'var(--gray)',
-                lineHeight: 1.75,
-                maxWidth: 460,
-              }}
-            >
-              {LAYERS[activeLayer].desc}
-            </p>
+              <p
+                style={{
+                  fontSize: 10,
+                  fontWeight: 700,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.1em',
+                  color: 'var(--blue)',
+                  marginBottom: 10,
+                }}
+              >
+                On-device. Always.
+              </p>
+              <ul style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
+                {CHECK_ITEMS.map((item) => (
+                  <li
+                    key={item}
+                    style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}
+                  >
+                    <svg
+                      style={{ flexShrink: 0, marginTop: 1, color: 'var(--blue)' }}
+                      width="14" height="14" viewBox="0 0 16 16" fill="none"
+                    >
+                      <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5" />
+                      <path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                    <span style={{ fontSize: 12, color: 'var(--gray)', lineHeight: 1.45 }}>
+                      {item}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
         </div>

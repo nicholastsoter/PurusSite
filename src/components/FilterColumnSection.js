@@ -36,15 +36,6 @@ const LAYERS = [
   },
 ]
 
-const CHECK_ITEMS = [
-  'Safe Search enforced on Google by default.',
-  'Safe Search enforced on DuckDuckGo',
-  'YouTube Restricted Mode always on',
-  '507 blocked keyword patterns',
-  "No browsing data is sent to Purus — we don't have servers to send it to.",
-  'No account, no cloud sync, no tracking',
-]
-
 // Murky slate at layer 1 → brand blue at layer 8
 const DOT_COLORS = [
   '#94a3b8',
@@ -147,7 +138,6 @@ export default function FilterColumnSection() {
 
   return (
     <div
-      id="how-it-works"
       ref={sectionRef}
       style={{
         height: '100vh',
@@ -157,32 +147,6 @@ export default function FilterColumnSection() {
       }}
     >
       <div className="max-w-5xl mx-auto w-full px-6">
-
-        {/* Section heading */}
-        <div style={{ marginBottom: 28 }}>
-          <p
-            style={{
-              fontSize: 11,
-              fontWeight: 700,
-              color: 'var(--blue)',
-              textTransform: 'uppercase',
-              letterSpacing: '0.12em',
-              marginBottom: 8,
-            }}
-          >
-            Eight layers
-          </p>
-          <h2
-            className="font-display"
-            style={{
-              fontSize: 'clamp(22px, 2.8vw, 34px)',
-              color: 'var(--dark)',
-              lineHeight: 1.15,
-            }}
-          >
-            Every page. Every search. Every time.
-          </h2>
-        </div>
 
         {/* Two-column layout */}
         <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-start">
@@ -321,49 +285,6 @@ export default function FilterColumnSection() {
               </p>
             </div>
 
-            {/* On-device summary card — desktop only */}
-            <div
-              className="hidden md:block"
-              style={{
-                marginTop: 24,
-                border: '1px solid var(--gray-mid)',
-                borderRadius: 12,
-                padding: '14px 16px',
-                maxWidth: 440,
-              }}
-            >
-              <p
-                style={{
-                  fontSize: 10,
-                  fontWeight: 700,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.1em',
-                  color: 'var(--blue)',
-                  marginBottom: 10,
-                }}
-              >
-                On-device. Always.
-              </p>
-              <ul style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
-                {CHECK_ITEMS.map((item) => (
-                  <li
-                    key={item}
-                    style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}
-                  >
-                    <svg
-                      style={{ flexShrink: 0, marginTop: 1, color: 'var(--blue)' }}
-                      width="14" height="14" viewBox="0 0 16 16" fill="none"
-                    >
-                      <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5" />
-                      <path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                    <span style={{ fontSize: 12, color: 'var(--gray)', lineHeight: 1.45 }}>
-                      {item}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
           </div>
 
         </div>

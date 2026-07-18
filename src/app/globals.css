@@ -10,6 +10,7 @@
   --gray: #6B7280;
   --gray-light: #F9FAFB;
   --gray-mid: #E5E7EB;
+
 }
 
 * {
@@ -244,4 +245,17 @@ nav.purus-nav {
   .carousel-pill-name {
     font-size: 12px !important;
   }
+}
+
+/* ─────────────────────────────────────────
+   FILTRATION COLUMN SECTION
+───────────────────────────────────────── */
+
+
+@keyframes filter-layer-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.filter-layer-in {
+  animation: filter-layer-in 280ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }

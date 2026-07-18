@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import AppCarousel from '@/components/AppCarousel'
 import FactSheet from '@/components/FactSheet'
+import FilterColumnSection from '@/components/FilterColumnSection'
 
 /* ─── FAQ accordion item ─── */
 function FAQItem({ question, answer }) {
@@ -197,7 +198,7 @@ export default function Home() {
             <span className="italic text-[var(--blue)]">
               {words2.map((word, i) => (
                 <span key={i} className="hero-word">
-                  {word}{i < words2.length - 1 ? ' ' : ''}
+                  {word}{i < words2.length - 1 ? ' ' : ''}
                 </span>
               ))}
             </span>
@@ -234,7 +235,6 @@ export default function Home() {
         </div>
       </section>
 
-
       {/* ══════════════════════════════════════
           STAT CARDS  (below hero)
       ══════════════════════════════════════ */}
@@ -270,6 +270,8 @@ export default function Home() {
           </p>
         </div>
       </section>
+
+      <FilterColumnSection />
 
       {/* ══════════════════════════════════════
           FACT SHEET
@@ -453,7 +455,6 @@ export default function Home() {
                 </li>
               ))}
             </ul>
-            {/* REVIEW BEFORE LAUNCH: Same unverified 99% claim as in STATS — needs product/legal sign-off. */}
             <p className="mt-5 text-xs text-[var(--gray)] text-center leading-relaxed">
               Built to stop the vast majority of explicit content before it loads — automatically, on every request.
             </p>
@@ -489,9 +490,6 @@ export default function Home() {
             title="Your choice of search engine"
             description="Use DuckDuckGo (private, default) or Google. Both have Safe Search permanently locked."
           />
-          {/* REVIEW BEFORE LAUNCH: Verify whether false positive reporting is a native
-              in-app flow (a tap on the blocked-page screen) or still routes to a Google Form.
-              Copy must match the actual UX — update this description before shipping. */}
           <FeatureCard
             title="False positive reporting"
             description="One tap to report a legitimate site that got blocked. We review every report and update our filters accordingly."

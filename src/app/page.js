@@ -476,15 +476,11 @@ export default function Home() {
       <footer className="px-6 py-10" style={{ background: 'var(--gray-light)', borderTop: '1px solid var(--gray-mid)' }}>
         <div className="max-w-5xl mx-auto flex flex-col items-center gap-4 text-center">
           <span className="font-bold text-lg tracking-tight" style={{ color: '#2B5BA8' }}>Purus</span>
-          <div className="flex items-center gap-2 text-sm text-[var(--gray)]">
+          <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-3 text-sm text-[var(--gray)]">
             <Link href="/privacy" className="hover:text-[var(--dark)]">Privacy Policy</Link>
-            <span aria-hidden="true">|</span>
             <Link href="/terms" className="hover:text-[var(--dark)]">Terms of Service</Link>
-            <span aria-hidden="true">|</span>
             <Link href="/support" className="hover:text-[var(--dark)]">Support</Link>
-            <span aria-hidden="true">|</span>
             <Link href="/feedback" className="hover:text-[var(--dark)]">Feedback</Link>
-            <span aria-hidden="true">|</span>
             <a href="mailto:nicholas.purus@gmail.com" className="hover:text-[var(--dark)]">Contact</a>
           </div>
           <p className="text-xs text-[var(--gray)]">
